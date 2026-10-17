@@ -3,6 +3,9 @@ apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 inputsDigest: sha256:52f4d3ba513eb18733d2582bee3868e15580430c38267f4c31c0b9267afcca15
 sourceDateEpoch: 1792108800
+profile:
+  path: org/profile.yaml
+  digest: sha256:88320a363111cd0438cb72fbfdca79b820207757bd64fb6e6d84dd8bcd74e4e2
 builder:
   buildkit:
     ref: moby/buildkit:v0.33.1
