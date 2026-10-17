@@ -47,9 +47,9 @@ RUN apk add --no-cache --repositories-file /dev/null \
       libuuid=2.42.4-r0 \
       libxcrypt=4.5.2-r6 \
       libxcrypt-dev=4.5.2-r6 \
-      libxml2=2.13.6-r3 \
-      libxml2-dev=2.13.6-r3 \
-      libxml2-utils=2.13.6-r3 \
+      libxml2-16=2.15.4-r1 \
+      libxml2-dev=2.15.4-r1 \
+      libxml2-utils=2.15.4-r1 \
       libzstd1=1.5.7-r10 \
       linux-headers=7.2.11-r0 \
       make=4.4.1-r15 \
@@ -61,8 +61,8 @@ RUN apk add --no-cache --repositories-file /dev/null \
       nss-db=2.43-r13 \
       nss-hesiod=2.43-r13 \
       openssf-compiler-options=20250904-r11 \
-      openssl-4.0-libcrypto=4.0.3-r6 \
-      openssl-4.0-libssl=4.0.3-r6 \
+      openssl-4.0-libcrypto=4.0.3-r7 \
+      openssl-4.0-libssl=4.0.3-r7 \
       openssl-provider-legacy-allowed=4.0.3-r1 \
       pkgconf=3.0.9-r0 \
       posix-cc-wrappers=2-r10 \
