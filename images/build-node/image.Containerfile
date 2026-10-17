@@ -39,8 +39,8 @@ RUN apk add --no-cache --repositories-file /dev/null \
       node-gyp=13.1.0-r0 \
       nodejs-24=24.22.0-r0 \
       npm=12.0.2-r0 \
-      openssl-4.0-libcrypto=4.0.3-r6 \
-      openssl-4.0-libssl=4.0.3-r6 \
+      openssl-4.0-libcrypto=4.0.3-r7 \
+      openssl-4.0-libssl=4.0.3-r7 \
       openssl-provider-legacy-allowed=4.0.3-r1 \
       wolfi-base=1-r7 \
       wolfi-baselayout=20230201-r30 \
