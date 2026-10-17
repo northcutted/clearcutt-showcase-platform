@@ -54,8 +54,8 @@ RUN apk add --no-cache --repositories-file /dev/null \
       ncurses-terminfo-base=6.6.20261010-r0 \
       nghttp3=1.18.0-r1 \
       ngtcp2=1.25.0-r5 \
-      openssl-4.0-libcrypto=4.0.3-r6 \
-      openssl-4.0-libssl=4.0.3-r6 \
+      openssl-4.0-libcrypto=4.0.3-r7 \
+      openssl-4.0-libssl=4.0.3-r7 \
       openssl-provider-legacy-allowed=4.0.3-r1 \
       readline=8.3-r3 \
       sqlite-libs=3.54.1-r0 \
