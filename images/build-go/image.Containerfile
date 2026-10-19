@@ -7,14 +7,14 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792108800 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1792281600 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:c2a4815b6ca49b9bbafd451b4bde690d567a86b2b6b54877faac8082a7bc4296
 ARG SOURCE_DATE_EPOCH
 RUN apk add --no-cache --repositories-file /dev/null \
       --repository https://apk.cgr.dev/chainguard \
@@ -47,7 +47,7 @@ RUN apk add --no-cache --repositories-file /dev/null \
       libpcre2-8-0=10.49-r1 \
       libpsl=0.23.3-r2 \
       libssl3=3.6.5-r2 \
-      libunistring=1.4.2-r4 \
+      libunistring=1.5-r0 \
       libverto=0.3.2-r9 \
       libxcrypt=4.5.2-r6 \
       ncurses=6.6.20261010-r0 \
