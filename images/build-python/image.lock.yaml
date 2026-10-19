@@ -2,7 +2,7 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 inputsDigest: sha256:9dc6385d8e9b5804bf0af2df4cc0f7559f4a244f537ad08eff780ac308b9cebb
-sourceDateEpoch: 1792108800
+sourceDateEpoch: 1792281600
 profile:
   path: org/profile.yaml
   digest: sha256:88320a363111cd0438cb72fbfdca79b820207757bd64fb6e6d84dd8bcd74e4e2
@@ -15,13 +15,13 @@ builder:
     digest: sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
   toolbox:
     ref: cgr.dev/chainguard/wolfi-base:latest
-    digest: sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+    digest: sha256:c2a4815b6ca49b9bbafd451b4bde690d567a86b2b6b54877faac8082a7bc4296
 base:
   ref: cgr.dev/chainguard/wolfi-base:latest
-  digest: sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+  digest: sha256:c2a4815b6ca49b9bbafd451b4bde690d567a86b2b6b54877faac8082a7bc4296
 packages:
   manager: apk
-  inputsDigest: sha256:325849551ca77125655fbc7213ec61cbebd44957e3c3f88f218e98ba09d6a9ef
+  inputsDigest: sha256:90d38b1e669f857103ccb27d6600a066ae3f664e6739efe842c4c4bdeb2d9b99
   repositories:
     - https://apk.cgr.dev/chainguard
   platforms:
