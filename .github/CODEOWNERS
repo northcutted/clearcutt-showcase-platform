@@ -1,0 +1,10 @@
+# Who reviews what in the platform repository. In the showcase one person
+# plays every team; in an organization these are team handles
+# (@northcutted/platform, @northcutted/security).
+*                   @northcutted
+/images/            @northcutted
+/stacks/            @northcutted
+# The trust policy and VEX statements decide what passes the gate anywhere:
+# security reviews every change.
+/org/trust.yaml     @northcutted
+/org/vex/           @northcutted

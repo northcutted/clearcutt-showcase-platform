@@ -1,0 +1,24 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://github.com/northcutted/clearcutt-showcase-platform/blob/main/org/vex/catalog.openvex.json",
+  "author": "clearcutt-showcase security (platform repository, org/vex/)",
+  "timestamp": "2026-10-18T00:00:00Z",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2025-15367",
+        "description": "CPython poplib: newlines in a user-controlled command inject further POP3 commands"
+      },
+      "products": [
+        {
+          "@id": "pkg:oci/catalog?repository_url=ghcr.io/northcutted/clearcutt-showcase/apps/catalog",
+          "subcomponents": [{ "@id": "pkg:apk/wolfi/python-3.14" }]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "The catalog service never imports poplib: not its own code (catalog/), nor any of its seven pinned dependencies (anyio, click, h11, idna, starlette, typing-extensions, uvicorn; checked 2026-10-18 by unpacking the locked wheels: 166 Python files, no poplib import). It speaks HTTP only. Scoped to the catalog image: run-python and build-python still report it, since another app on them could use poplib. Revisit when catalog's dependencies change; remove when Wolfi's python-3.14 ships the upstream fix."
+    }
+  ]
+}
