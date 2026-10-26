@@ -7,14 +7,14 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792108800 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1792886400 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7
 ARG SOURCE_DATE_EPOCH
 RUN apk add --no-cache --repositories-file /dev/null \
       --repository https://apk.cgr.dev/chainguard \
@@ -22,21 +22,21 @@ RUN apk add --no-cache --repositories-file /dev/null \
       binutils=2.47-r1 \
       build-base=1-r10 \
       busybox=1.38.0-r3 \
-      ca-certificates-bundle=20260909-r2 \
+      ca-certificates-bundle=20260909-r3 \
       gcc=16.2.0-r1 \
-      gdbm=1.26-r7 \
-      glibc-2.44=2.44-r8 \
-      glibc-2.44-locale-posix=2.44-r8 \
+      gdbm=1.26-r8 \
+      glibc-2.44=2.44-r9 \
+      glibc-2.44-locale-posix=2.44-r9 \
       glibc-dev=2.43-r13 \
-      gmp=6.3.0-r10 \
-      isl=0.28-r4 \
-      ld-linux-2.44=2.44-r8 \
+      gmp=6.3.0-r11 \
+      isl=0.28-r5 \
+      ld-linux-2.44=2.44-r9 \
       libatomic=16.2.0-r1 \
-      libbrotlicommon1=1.2.0-r6 \
-      libbrotlidec1=1.2.0-r6 \
-      libbrotlienc1=1.2.0-r6 \
-      libbz2-1=1.0.8-r25 \
-      libcrypt1-2.44=2.44-r8 \
+      libbrotlicommon1=1.2.1-r1 \
+      libbrotlidec1=1.2.1-r1 \
+      libbrotlienc1=1.2.1-r1 \
+      libbz2-1=1.0.8-r27 \
+      libcrypt1-2.44=2.44-r9 \
       libexpat1=2.9.0-r0 \
       libffi=3.8.0-r2 \
       libgcc=16.2.0-r1 \
@@ -44,41 +44,42 @@ RUN apk add --no-cache --repositories-file /dev/null \
       libquadmath=16.2.0-r1 \
       libstdc++=16.2.0-r1 \
       libstdc++-dev=16.2.0-r1 \
-      libuuid=2.42.4-r0 \
+      libuuid=2.42.4-r1 \
       libxcrypt=4.5.2-r6 \
       libxcrypt-dev=4.5.2-r6 \
       libxml2-16=2.15.4-r1 \
       libxml2-dev=2.15.4-r1 \
       libxml2-utils=2.15.4-r1 \
-      libzstd1=1.5.7-r10 \
-      linux-headers=7.2.11-r0 \
+      libzstd1=1.5.7-r11 \
+      linux-headers=7.3-r0 \
       make=4.4.1-r15 \
-      mpc=1.4.1-r1 \
-      mpdecimal=4.0.1-r4 \
-      mpfr=4.2.2-r3 \
-      ncurses=6.6.20261010-r0 \
-      ncurses-terminfo-base=6.6.20261010-r0 \
+      mpc=1.4.1-r2 \
+      mpdecimal=4.0.1-r5 \
+      mpfr=4.2.2-r4 \
+      ncurses=6.6.20261024-r0 \
+      ncurses-terminfo-base=6.6.20261024-r0 \
       nss-db=2.43-r13 \
       nss-hesiod=2.43-r13 \
       openssf-compiler-options=20250904-r11 \
-      openssl-4.0-libcrypto=4.0.3-r7 \
-      openssl-4.0-libssl=4.0.3-r7 \
+      openssl-4.0-libcrypto=4.0.3-r8 \
+      openssl-4.0-libssl=4.0.3-r8 \
       openssl-provider-legacy-allowed=4.0.3-r1 \
-      pkgconf=3.0.9-r0 \
+      pkgconf=3.0.10-r1 \
       posix-cc-wrappers=2-r10 \
-      py3-pip-wheel=26.2.1-r4 \
-      py3.14-pip=26.2.1-r4 \
-      py3.14-pip-base=26.2.1-r4 \
-      py3.14-setuptools=84.0.0-r1 \
-      python-3.14=3.14.8_git20261014-r0 \
-      python-3.14-base=3.14.8_git20261014-r0 \
-      python-3.14-base-dev=3.14.8_git20261014-r0 \
-      python-3.14-dev=3.14.8_git20261014-r0 \
+      py3-pip-wheel=26.2.2-r0 \
+      py3.14-pip=26.2.2-r0 \
+      py3.14-pip-base=26.2.2-r0 \
+      py3.14-setuptools=84.2.1-r0 \
+      python-3.14=3.14.8_git20261021-r2 \
+      python-3.14-base=3.14.8_git20261021-r2 \
+      python-3.14-base-dev=3.14.8_git20261021-r2 \
+      python-3.14-dev=3.14.8_git20261021-r2 \
+      python-3.14-runtime=3.14.8_git20261021-r2 \
       readline=8.3-r3 \
       sqlite-libs=3.54.1-r0 \
       wolfi-base=1-r7 \
       wolfi-baselayout=20230201-r30 \
-      wolfi-keys=1-r13 \
+      wolfi-keys=1-r14 \
       xz=5.8.4-r0 \
       xz-dev=5.8.4-r0 \
       zlib=1.3.2.1_rc20260921-r0 \

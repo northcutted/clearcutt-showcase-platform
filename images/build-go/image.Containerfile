@@ -7,61 +7,61 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792108800 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1792886400 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7
 ARG SOURCE_DATE_EPOCH
 RUN apk add --no-cache --repositories-file /dev/null \
       --repository https://apk.cgr.dev/chainguard \
       apk-tools=2.14.10-r17 \
       busybox=1.38.0-r3 \
-      ca-certificates-bundle=20260909-r2 \
+      ca-certificates-bundle=20260909-r3 \
       cyrus-sasl-heimdal-libs=2.1.28-r58 \
-      gdbm=1.26-r7 \
-      git=2.56.0-r2 \
-      glibc-2.44=2.44-r8 \
-      glibc-2.44-locale-posix=2.44-r8 \
-      go-1.27=1.27.2-r0 \
+      gdbm=1.26-r8 \
+      git=2.56.0-r3 \
+      glibc-2.44=2.44-r9 \
+      glibc-2.44-locale-posix=2.44-r9 \
+      go-1.27=1.27.3-r0 \
       heimdal-libs=7.8.0-r54 \
       keyutils-libs=1.6.3-r41 \
       krb5-conf=1.0-r10 \
       krb5-libs=1.22.2-r5 \
-      ld-linux-2.44=2.44-r8 \
-      libbrotlicommon1=1.2.0-r6 \
-      libbrotlidec1=1.2.0-r6 \
-      libbrotlienc1=1.2.0-r6 \
-      libcom_err=1.47.4-r3 \
-      libcrypt1-2.44=2.44-r8 \
-      libcrypto3=3.6.5-r2 \
-      libcurl-openssl4=8.23.0-r0 \
+      ld-linux-2.44=2.44-r9 \
+      libbrotlicommon1=1.2.1-r1 \
+      libbrotlidec1=1.2.1-r1 \
+      libbrotlienc1=1.2.1-r1 \
+      libcom_err=1.47.4-r4 \
+      libcrypt1-2.44=2.44-r9 \
+      libcrypto3=3.6.5-r5 \
+      libcurl-openssl4=8.23.0-r2 \
       libexpat1=2.9.0-r0 \
       libgcc=16.2.0-r1 \
-      libidn2=2.3.8-r10 \
+      libidn2=2.3.8-r11 \
       libldap-2.6=2.6.14-r0 \
-      libnghttp2-14=1.70.0-r5 \
+      libnghttp2-14=1.70.0-r6 \
       libpcre2-8-0=10.49-r1 \
-      libpsl=0.23.3-r2 \
-      libssl3=3.6.5-r2 \
-      libunistring=1.4.2-r4 \
-      libverto=0.3.2-r9 \
+      libpsl=0.23.3-r3 \
+      libssl3=3.6.5-r5 \
+      libunistring=1.5-r0 \
+      libverto=0.3.2-r10 \
       libxcrypt=4.5.2-r6 \
-      ncurses=6.6.20261010-r0 \
-      ncurses-terminfo-base=6.6.20261010-r0 \
-      nghttp3=1.18.0-r1 \
-      ngtcp2=1.25.0-r5 \
-      openssl-4.0-libcrypto=4.0.3-r7 \
-      openssl-4.0-libssl=4.0.3-r7 \
+      ncurses=6.6.20261024-r0 \
+      ncurses-terminfo-base=6.6.20261024-r0 \
+      nghttp3=1.18.0-r2 \
+      ngtcp2=1.25.0-r6 \
+      openssl-4.0-libcrypto=4.0.3-r8 \
+      openssl-4.0-libssl=4.0.3-r8 \
       openssl-provider-legacy-allowed=4.0.3-r1 \
       readline=8.3-r3 \
       sqlite-libs=3.54.1-r0 \
       wolfi-base=1-r7 \
       wolfi-baselayout=20230201-r30 \
-      wolfi-keys=1-r13 \
+      wolfi-keys=1-r14 \
       zlib=1.3.2.1_rc20260921-r0 \
  && rm -f /var/cache/ldconfig/aux-cache
 ENV GOTOOLCHAIN="local"
