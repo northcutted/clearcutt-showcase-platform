@@ -17,28 +17,28 @@ kind: TrustPolicy
 signers:
   - name: platform-images
     roles: [image]
-    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet)\.yml@refs/tags/v\d+\.\d+\.\d+$
+    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet|reattest)\.yml@refs/tags/v\d+\.\d+\.\d+$
     issuer: https://token.actions.githubusercontent.com
     sourceRepository: https://github.com/northcutted/clearcutt-showcase-platform
     sourceMatchesImage: true
     sourceRef: refs/heads/main
   - name: checkout-images
     roles: [image]
-    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet)\.yml@refs/tags/v\d+\.\d+\.\d+$
+    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet|reattest)\.yml@refs/tags/v\d+\.\d+\.\d+$
     issuer: https://token.actions.githubusercontent.com
     sourceRepository: https://github.com/northcutted/clearcutt-showcase-checkout
     sourceMatchesImage: true
     sourceRef: refs/heads/main
   - name: catalog-images
     roles: [image]
-    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet)\.yml@refs/tags/v\d+\.\d+\.\d+$
+    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet|reattest)\.yml@refs/tags/v\d+\.\d+\.\d+$
     issuer: https://token.actions.githubusercontent.com
     sourceRepository: https://github.com/northcutted/clearcutt-showcase-catalog
     sourceMatchesImage: true
     sourceRef: refs/heads/main
   - name: storefront-images
     roles: [image]
-    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet)\.yml@refs/tags/v\d+\.\d+\.\d+$
+    identityRegexp: ^https://github\.com/northcutted/clearcutt-factory/\.github/workflows/(images|fleet|reattest)\.yml@refs/tags/v\d+\.\d+\.\d+$
     issuer: https://token.actions.githubusercontent.com
     sourceRepository: https://github.com/northcutted/clearcutt-showcase-storefront
     sourceMatchesImage: true
@@ -47,4 +47,9 @@ signers:
   - name: platform-stacks
     roles: [stack]
     identity: https://github.com/northcutted/clearcutt-showcase-platform/.github/workflows/stacks.yml@refs/heads/main
+    issuer: https://token.actions.githubusercontent.com
+  # Estate history bundles are trusted independently of image evidence.
+  - name: estate-report
+    roles: [estate]
+    identity: https://github.com/northcutted/clearcutt-showcase/.github/workflows/estate.yml@refs/heads/main
     issuer: https://token.actions.githubusercontent.com

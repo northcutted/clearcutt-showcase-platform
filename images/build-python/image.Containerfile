@@ -14,77 +14,323 @@
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-amd64
 ARG SOURCE_DATE_EPOCH
-RUN apk add --no-cache --repositories-file /dev/null \
-      --repository https://apk.cgr.dev/chainguard \
-      apk-tools=2.14.10-r17 \
-      binutils=2.47-r1 \
-      build-base=1-r10 \
-      busybox=1.38.0-r3 \
-      ca-certificates-bundle=20260909-r3 \
-      gcc=16.2.0-r1 \
-      gdbm=1.26-r8 \
-      glibc-2.44=2.44-r9 \
-      glibc-2.44-locale-posix=2.44-r9 \
-      glibc-dev=2.43-r13 \
-      gmp=6.3.0-r11 \
-      isl=0.28-r5 \
-      ld-linux-2.44=2.44-r9 \
-      libatomic=16.2.0-r1 \
-      libbrotlicommon1=1.2.1-r1 \
-      libbrotlidec1=1.2.1-r1 \
-      libbrotlienc1=1.2.1-r1 \
-      libbz2-1=1.0.8-r27 \
-      libcrypt1-2.44=2.44-r9 \
-      libexpat1=2.9.0-r0 \
-      libffi=3.8.0-r2 \
-      libgcc=16.2.0-r1 \
-      libgomp=16.2.0-r1 \
-      libquadmath=16.2.0-r1 \
-      libstdc++=16.2.0-r1 \
-      libstdc++-dev=16.2.0-r1 \
-      libuuid=2.42.4-r1 \
-      libxcrypt=4.5.2-r6 \
-      libxcrypt-dev=4.5.2-r6 \
-      libxml2-16=2.15.4-r1 \
-      libxml2-dev=2.15.4-r1 \
-      libxml2-utils=2.15.4-r1 \
-      libzstd1=1.5.7-r11 \
-      linux-headers=7.3-r0 \
-      make=4.4.1-r15 \
-      mpc=1.4.1-r2 \
-      mpdecimal=4.0.1-r5 \
-      mpfr=4.2.2-r4 \
-      ncurses=6.6.20261024-r0 \
-      ncurses-terminfo-base=6.6.20261024-r0 \
-      nss-db=2.43-r13 \
-      nss-hesiod=2.43-r13 \
-      openssf-compiler-options=20250904-r11 \
-      openssl-4.0-libcrypto=4.0.3-r8 \
-      openssl-4.0-libssl=4.0.3-r8 \
-      openssl-provider-legacy-allowed=4.0.3-r1 \
-      pkgconf=3.0.10-r1 \
-      posix-cc-wrappers=2-r10 \
-      py3-pip-wheel=26.2.2-r0 \
-      py3.14-pip=26.2.2-r0 \
-      py3.14-pip-base=26.2.2-r0 \
-      py3.14-setuptools=84.2.1-r0 \
-      python-3.14=3.14.8_git20261021-r2 \
-      python-3.14-base=3.14.8_git20261021-r2 \
-      python-3.14-base-dev=3.14.8_git20261021-r2 \
-      python-3.14-dev=3.14.8_git20261021-r2 \
-      python-3.14-runtime=3.14.8_git20261021-r2 \
-      readline=8.3-r3 \
-      sqlite-libs=3.54.1-r0 \
-      wolfi-base=1-r7 \
-      wolfi-baselayout=20230201-r30 \
-      wolfi-keys=1-r14 \
-      xz=5.8.4-r0 \
-      xz-dev=5.8.4-r0 \
-      zlib=1.3.2.1_rc20260921-r0 \
-      zlib-dev=1.3.2.1_rc20260921-r0 \
- && rm -f /var/cache/ldconfig/aux-cache
+RUN <<'FACTORY_EOF'
+set -eu
+apk add --no-cache --repositories-file /dev/null \
+  --repository https://apk.cgr.dev/chainguard \
+  apk-tools=2.14.10-r17 \
+  binutils=2.47-r1 \
+  build-base=1-r10 \
+  busybox=1.38.0-r3 \
+  ca-certificates-bundle=20260909-r3 \
+  gcc=16.2.0-r1 \
+  gdbm=1.26-r8 \
+  glibc-2.44=2.44-r9 \
+  glibc-2.44-locale-posix=2.44-r9 \
+  glibc-dev=2.43-r13 \
+  gmp=6.3.0-r11 \
+  isl=0.28-r5 \
+  ld-linux-2.44=2.44-r9 \
+  libatomic=16.2.0-r1 \
+  libbrotlicommon1=1.2.1-r1 \
+  libbrotlidec1=1.2.1-r1 \
+  libbrotlienc1=1.2.1-r1 \
+  libbz2-1=1.0.8-r27 \
+  libcrypt1-2.44=2.44-r9 \
+  libexpat1=2.9.0-r0 \
+  libffi=3.8.0-r2 \
+  libgcc=16.2.0-r1 \
+  libgomp=16.2.0-r1 \
+  libquadmath=16.2.0-r1 \
+  libstdc++=16.2.0-r1 \
+  libstdc++-dev=16.2.0-r1 \
+  libuuid=2.42.4-r1 \
+  libxcrypt=4.5.2-r6 \
+  libxcrypt-dev=4.5.2-r6 \
+  libxml2-16=2.15.4-r1 \
+  libxml2-dev=2.15.4-r1 \
+  libxml2-utils=2.15.4-r1 \
+  libzstd1=1.5.7-r11 \
+  linux-headers=7.3-r0 \
+  make=4.4.1-r15 \
+  mpc=1.4.1-r2 \
+  mpdecimal=4.0.1-r5 \
+  mpfr=4.2.2-r4 \
+  ncurses=6.6.20261024-r0 \
+  ncurses-terminfo-base=6.6.20261024-r0 \
+  nss-db=2.43-r13 \
+  nss-hesiod=2.43-r13 \
+  openssf-compiler-options=20250904-r11 \
+  openssl-4.0-libcrypto=4.0.3-r8 \
+  openssl-4.0-libssl=4.0.3-r8 \
+  openssl-provider-legacy-allowed=4.0.3-r1 \
+  pkgconf=3.0.10-r1 \
+  posix-cc-wrappers=2-r10 \
+  py3-pip-wheel=26.2.2-r0 \
+  py3.14-pip=26.2.2-r0 \
+  py3.14-pip-base=26.2.2-r0 \
+  py3.14-setuptools=84.2.1-r0 \
+  python-3.14=3.14.8_git20261021-r2 \
+  python-3.14-base=3.14.8_git20261021-r2 \
+  python-3.14-base-dev=3.14.8_git20261021-r2 \
+  python-3.14-dev=3.14.8_git20261021-r2 \
+  python-3.14-runtime=3.14.8_git20261021-r2 \
+  readline=8.3-r3 \
+  sqlite-libs=3.54.1-r0 \
+  wolfi-base=1-r7 \
+  wolfi-baselayout=20230201-r30 \
+  wolfi-keys=1-r14 \
+  xz=5.8.4-r0 \
+  xz-dev=5.8.4-r0 \
+  zlib=1.3.2.1_rc20260921-r0 \
+  zlib-dev=1.3.2.1_rc20260921-r0
+rm -f /var/cache/ldconfig/aux-cache
+# every package must be the build the lock pins (apk's database records
+# each one's APKINDEX checksum)
+awk '
+  NR == FNR { want[$1] = $2 " " $3; next }
+  /^P:/ { p = substr($0, 3) }
+  /^V:/ { v = substr($0, 3) }
+  /^C:/ { c = substr($0, 3) }
+  /^$/ { if (p != "") have[p] = v " " c; p = ""; v = ""; c = "" }
+  END {
+    if (p != "") have[p] = v " " c
+    for (n in want) if (have[n] != want[n]) {
+      printf "clearcutt-factory: %s is %s, but the lock pins %s\n", n, ((n in have) ? have[n] : "not installed"), want[n] > "/dev/stderr"
+      bad = 1
+    }
+    exit bad
+  }' - /lib/apk/db/installed <<'LOCKED'
+apk-tools 2.14.10-r17 Q1E8t4KtTp/Uwpr20qpzYhUreUy+o=
+binutils 2.47-r1 Q1uc0/qWlTQZAXPV4BZmfSN8wIAQY=
+build-base 1-r10 Q1mQ0LNdgH3PCeqGyeJEQY75bMNno=
+busybox 1.38.0-r3 Q1nJ0RNPYKE/6p9+1WgdqC1lA0JnM=
+ca-certificates-bundle 20260909-r3 Q18MLPVxhaLLo4YMbPIN2d/wZuNN4=
+gcc 16.2.0-r1 Q1w7NF4JmAi9q5HagVQhKcH/4gYrA=
+gdbm 1.26-r8 Q10dK27jlg+nilHA+JMRlCnSxw3Bg=
+glibc-2.44 2.44-r9 Q1e0zVOAZDLvu3gMZUtDdU1qxdFUY=
+glibc-2.44-locale-posix 2.44-r9 Q17w1Tc6WPa2u/SdKggOvcOz1icm4=
+glibc-dev 2.43-r13 Q1sT6GsTyTkGlWdcc5DC5MdBhvWdc=
+gmp 6.3.0-r11 Q12G3naafhifc/++Yn8WlFMH/8v+4=
+isl 0.28-r5 Q1I1YEBz0hVeHpgXoT/VPtteUNl/M=
+ld-linux-2.44 2.44-r9 Q15+wLdaXDb9Nj1HxgRiXHO8eDid8=
+libatomic 16.2.0-r1 Q1FMBhfVc9nbcpzv8PetYRpEfzlLQ=
+libbrotlicommon1 1.2.1-r1 Q1BnOASAJctNICIV3RYBxRlqcTIhs=
+libbrotlidec1 1.2.1-r1 Q18McycIizTY7w2et1oDNJ2OAnBtQ=
+libbrotlienc1 1.2.1-r1 Q1mmfdrEXpK/DsS57Iu4I61mELlUE=
+libbz2-1 1.0.8-r27 Q1o3KuDmOmz1Y4E7TLE/CA3P8qmA0=
+libcrypt1-2.44 2.44-r9 Q1PZvQKhl0QllVcM9HqdjaC/vQvF8=
+libexpat1 2.9.0-r0 Q1BC65V0Hv+gnJNyw/bhPXBGDFang=
+libffi 3.8.0-r2 Q1Xv/AsO+lsjORCxdKxyfkMMLLkO0=
+libgcc 16.2.0-r1 Q1krF+IIJj8jk+4D2vdu0yg968QJg=
+libgomp 16.2.0-r1 Q1JLTYZJlH0PKP94kYbFgC0s+RYBc=
+libquadmath 16.2.0-r1 Q1aTxV4UAdO/dv/DVtOrW31g9gAQg=
+libstdc++ 16.2.0-r1 Q1Gzz2sKOTKWmEe1Oih1l+g6LABMs=
+libstdc++-dev 16.2.0-r1 Q1MWK4ap/fgtVsTDHfMrkJ8be0pXM=
+libuuid 2.42.4-r1 Q1Iw0G6iqM4Kw9TSzZtsXNj8sabmI=
+libxcrypt 4.5.2-r6 Q1AgAMlqTIWIJ/agsYN4WFrdg4lUE=
+libxcrypt-dev 4.5.2-r6 Q1nE+RinUVXiwFk3JkJFcqmev+6pg=
+libxml2-16 2.15.4-r1 Q1xlr4DcJ+dUTWOoL52C1ZmdONjCI=
+libxml2-dev 2.15.4-r1 Q1/9aiNNC4wy29IBQdG/ls40NpMuE=
+libxml2-utils 2.15.4-r1 Q1F8u4bVszMTALfFwHAnmpej/LlRU=
+libzstd1 1.5.7-r11 Q1vGI491/mFVev73MqMZ1nP1yPZec=
+linux-headers 7.3-r0 Q1NZlIhUb4Ujyho8neYJnI0noNjcE=
+make 4.4.1-r15 Q1gck1BsLmGkYBlSO/l6T4nFqy2Qg=
+mpc 1.4.1-r2 Q1ICsX9GIyKOzG9odvXeiy9rO2Oig=
+mpdecimal 4.0.1-r5 Q1davBgYOCxQGwJHnpnDHMWrvgrok=
+mpfr 4.2.2-r4 Q1FEJHM6kzXoeBEGfPGK19ec4xQWQ=
+ncurses 6.6.20261024-r0 Q1ERZqcCUy9qQ4fVKD0S0I4iEMnX4=
+ncurses-terminfo-base 6.6.20261024-r0 Q1y0QyqviqgSAOprijA2WB+7MqA1k=
+nss-db 2.43-r13 Q18OKv6PDVBxG9CyWJvWKnCPsNayg=
+nss-hesiod 2.43-r13 Q1kf0nSA9A/Ml527mvL3E3rYWYlV0=
+openssf-compiler-options 20250904-r11 Q1Qi7E22V6ehUIcP784RXaxjt4KF0=
+openssl-4.0-libcrypto 4.0.3-r8 Q1W9piTcgyubhrducJCMM7+qErDxo=
+openssl-4.0-libssl 4.0.3-r8 Q1arwi4n4L3VZ3S8YJ6P4WwY/7JjY=
+openssl-provider-legacy-allowed 4.0.3-r1 Q1GPTXqRetxoF0f0PU1QPba50eqyw=
+pkgconf 3.0.10-r1 Q1ESsm8mHYVXPN0vIyV8NBtQcibjA=
+posix-cc-wrappers 2-r10 Q11OlXaNv+Pb3dZ1SRlopOUou+y4Q=
+py3-pip-wheel 26.2.2-r0 Q1MDc1dIGRthl39o3F3XxvmL1+gLo=
+py3.14-pip 26.2.2-r0 Q1iKyey1FS+5DVUpnesnOk3iyyBAg=
+py3.14-pip-base 26.2.2-r0 Q1Kb6rDAdqDcGuDS2I9LGRqqcTWkY=
+py3.14-setuptools 84.2.1-r0 Q18FXSnj9mKKZYB7FhNmwrSXnt/nI=
+python-3.14 3.14.8_git20261021-r2 Q1Mze3J/6uWrXfX53mBIGjGpcvAds=
+python-3.14-base 3.14.8_git20261021-r2 Q12P50wzpv3FhprzI+4gA4rHsotM8=
+python-3.14-base-dev 3.14.8_git20261021-r2 Q1kez0BGYYayAcRvOQfdMyKuSKi5k=
+python-3.14-dev 3.14.8_git20261021-r2 Q1KXj13Fwbi6eH/O/lFwUqfM7oA8M=
+python-3.14-runtime 3.14.8_git20261021-r2 Q1Z+dcukw1CvFDjyC5sU+mmaUL+jg=
+readline 8.3-r3 Q1DpD7gaJW7NfhS6UXgOqJ/d9LlBc=
+sqlite-libs 3.54.1-r0 Q1VRLw0RR5HoAu1uTfKALfMDoAMco=
+wolfi-base 1-r7 Q16Ctc7TvokDUPOi+0TkHCeSmryh0=
+wolfi-baselayout 20230201-r30 Q1qyFV0NZAQAnaHoGFhRwUQlzoQC0=
+wolfi-keys 1-r14 Q1pjSE0onslwptVuXi4b8BfLXGXXw=
+xz 5.8.4-r0 Q1krKZR0I/kPCVPgULCI8yz9N3BZc=
+xz-dev 5.8.4-r0 Q1LKfabPNFb46mz7Kz9iXXXZec50I=
+zlib 1.3.2.1_rc20260921-r0 Q1qghpZ2L1/BEB0JcVmsu+LM29uoI=
+zlib-dev 1.3.2.1_rc20260921-r0 Q1NNrF1YaoU4HIreFPS4moHp9svlY=
+LOCKED
+FACTORY_EOF
+
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-arm64
+ARG SOURCE_DATE_EPOCH
+RUN <<'FACTORY_EOF'
+set -eu
+apk add --no-cache --repositories-file /dev/null \
+  --repository https://apk.cgr.dev/chainguard \
+  apk-tools=2.14.10-r17 \
+  binutils=2.47-r1 \
+  build-base=1-r10 \
+  busybox=1.38.0-r3 \
+  ca-certificates-bundle=20260909-r3 \
+  gcc=16.2.0-r1 \
+  gdbm=1.26-r8 \
+  glibc-2.44=2.44-r9 \
+  glibc-2.44-locale-posix=2.44-r9 \
+  glibc-dev=2.43-r13 \
+  gmp=6.3.0-r11 \
+  isl=0.28-r5 \
+  ld-linux-2.44=2.44-r9 \
+  libatomic=16.2.0-r1 \
+  libbrotlicommon1=1.2.1-r1 \
+  libbrotlidec1=1.2.1-r1 \
+  libbrotlienc1=1.2.1-r1 \
+  libbz2-1=1.0.8-r27 \
+  libcrypt1-2.44=2.44-r9 \
+  libexpat1=2.9.0-r0 \
+  libffi=3.8.0-r2 \
+  libgcc=16.2.0-r1 \
+  libgomp=16.2.0-r1 \
+  libquadmath=16.2.0-r1 \
+  libstdc++=16.2.0-r1 \
+  libstdc++-dev=16.2.0-r1 \
+  libuuid=2.42.4-r1 \
+  libxcrypt=4.5.2-r6 \
+  libxcrypt-dev=4.5.2-r6 \
+  libxml2-16=2.15.4-r1 \
+  libxml2-dev=2.15.4-r1 \
+  libxml2-utils=2.15.4-r1 \
+  libzstd1=1.5.7-r11 \
+  linux-headers=7.3-r0 \
+  make=4.4.1-r15 \
+  mpc=1.4.1-r2 \
+  mpdecimal=4.0.1-r5 \
+  mpfr=4.2.2-r4 \
+  ncurses=6.6.20261024-r0 \
+  ncurses-terminfo-base=6.6.20261024-r0 \
+  nss-db=2.43-r13 \
+  nss-hesiod=2.43-r13 \
+  openssf-compiler-options=20250904-r11 \
+  openssl-4.0-libcrypto=4.0.3-r8 \
+  openssl-4.0-libssl=4.0.3-r8 \
+  openssl-provider-legacy-allowed=4.0.3-r1 \
+  pkgconf=3.0.10-r1 \
+  posix-cc-wrappers=2-r10 \
+  py3-pip-wheel=26.2.2-r0 \
+  py3.14-pip=26.2.2-r0 \
+  py3.14-pip-base=26.2.2-r0 \
+  py3.14-setuptools=84.2.1-r0 \
+  python-3.14=3.14.8_git20261021-r2 \
+  python-3.14-base=3.14.8_git20261021-r2 \
+  python-3.14-base-dev=3.14.8_git20261021-r2 \
+  python-3.14-dev=3.14.8_git20261021-r2 \
+  python-3.14-runtime=3.14.8_git20261021-r2 \
+  readline=8.3-r3 \
+  sqlite-libs=3.54.1-r0 \
+  wolfi-base=1-r7 \
+  wolfi-baselayout=20230201-r30 \
+  wolfi-keys=1-r14 \
+  xz=5.8.4-r0 \
+  xz-dev=5.8.4-r0 \
+  zlib=1.3.2.1_rc20260921-r0 \
+  zlib-dev=1.3.2.1_rc20260921-r0
+rm -f /var/cache/ldconfig/aux-cache
+# every package must be the build the lock pins (apk's database records
+# each one's APKINDEX checksum)
+awk '
+  NR == FNR { want[$1] = $2 " " $3; next }
+  /^P:/ { p = substr($0, 3) }
+  /^V:/ { v = substr($0, 3) }
+  /^C:/ { c = substr($0, 3) }
+  /^$/ { if (p != "") have[p] = v " " c; p = ""; v = ""; c = "" }
+  END {
+    if (p != "") have[p] = v " " c
+    for (n in want) if (have[n] != want[n]) {
+      printf "clearcutt-factory: %s is %s, but the lock pins %s\n", n, ((n in have) ? have[n] : "not installed"), want[n] > "/dev/stderr"
+      bad = 1
+    }
+    exit bad
+  }' - /lib/apk/db/installed <<'LOCKED'
+apk-tools 2.14.10-r17 Q1vIqs9LYJJ8bU8v4G9BTJpQNtxKQ=
+binutils 2.47-r1 Q11ToNG1dljQqRlOcRxxtjFOynynI=
+build-base 1-r10 Q1v9xC4rIhiZLMF7Ti3L6gbndJyPY=
+busybox 1.38.0-r3 Q1EJpocCHP/Q38Ix79OXIZwyt7hDA=
+ca-certificates-bundle 20260909-r3 Q12NXUp1YSrgDFsj3YmYoLOz7Pngg=
+gcc 16.2.0-r1 Q18tGn4Lr9rCVDhjLsv5SBtEf240E=
+gdbm 1.26-r8 Q1Oc1IadLzmjtZ9OKGplVv/0Gh3/U=
+glibc-2.44 2.44-r9 Q15fmx4Mu3b1Z00J6i1qeaTHiXwBs=
+glibc-2.44-locale-posix 2.44-r9 Q1XhYJ2eXrA53xT851YwZGC2na0yA=
+glibc-dev 2.43-r13 Q123iQ9Iu6arOHh9qqiHJOqtxxaWQ=
+gmp 6.3.0-r11 Q1bsRGMrtYcbFhHntRhbpCm39QsxU=
+isl 0.28-r5 Q1T2ULQF0y1t3q/L0948ue6B+9HY4=
+ld-linux-2.44 2.44-r9 Q1pq1tKaWB61Hp0I0cYCnb7wDLXRs=
+libatomic 16.2.0-r1 Q16NCYReXuR+aTBvr8FCYoieGCLsY=
+libbrotlicommon1 1.2.1-r1 Q13kKxkPG4a4QoIEWOUYUWR745Urc=
+libbrotlidec1 1.2.1-r1 Q1D89+5z1UWrwdFvdl8ogPbG5l+x4=
+libbrotlienc1 1.2.1-r1 Q1shZXTE3aaTWTDElKuOp2ib6v9G0=
+libbz2-1 1.0.8-r27 Q1k5xQYXhFaNkt579ZD5Mi/brVAYw=
+libcrypt1-2.44 2.44-r9 Q1pmiZjRr694tOUhKYdi1sk12mVyQ=
+libexpat1 2.9.0-r0 Q1lRSL/Wub6+as280K86QfIdGkzvo=
+libffi 3.8.0-r2 Q1UbTjndZOUgOsmQ7YNqHCilYMoSE=
+libgcc 16.2.0-r1 Q10B3sunNH1/57hljS+7r1oisdKB8=
+libgomp 16.2.0-r1 Q1JzrEzV2tZA4Rciv8S4ZS+XQ0Tok=
+libquadmath 16.2.0-r1 Q1oHKx/BuQPNBm389hd24xW9cJcf8=
+libstdc++ 16.2.0-r1 Q1ftrK0W2Zrm5RSoejw1JhR7Js4fY=
+libstdc++-dev 16.2.0-r1 Q1rTq/aiL8LBTko0qBdZp52WDJB4Q=
+libuuid 2.42.4-r1 Q1ISncHZFvTPvNUa2mDkQM/Yqn1xU=
+libxcrypt 4.5.2-r6 Q136uIG5Y/puIb7nbFIG90fgU8KK4=
+libxcrypt-dev 4.5.2-r6 Q13QP2wOBLje6fxgTgXdns/Ng5l8s=
+libxml2-16 2.15.4-r1 Q1HrZlpjh4w1NuI7Emiid2Di2NMWM=
+libxml2-dev 2.15.4-r1 Q1qvZ1ncYiNACk3pGcYSiZlMOTIB4=
+libxml2-utils 2.15.4-r1 Q1vfUIytG1hwFi4E+VkBAMSb4FGJE=
+libzstd1 1.5.7-r11 Q1nxzG2ykaCmGvfZOgoaojqrgXM0s=
+linux-headers 7.3-r0 Q1a46ACSeqUJdu7NY2qqSaJmKVNME=
+make 4.4.1-r15 Q1drj5IU8afcXRmzqNGAFlpnmj6W4=
+mpc 1.4.1-r2 Q1Z44w/6C49zpdWmlFYl9vljF/JEE=
+mpdecimal 4.0.1-r5 Q10Z5vtzX+2Hs1/0KMp6ep7EZPPas=
+mpfr 4.2.2-r4 Q1bAw0pztOszuikL/owLvn4WSLs1E=
+ncurses 6.6.20261024-r0 Q12a5aLWXHSr6Pv/rieaYpxLLk2ZY=
+ncurses-terminfo-base 6.6.20261024-r0 Q17OiOIMdK2dm+bk966Fpp99KMNlg=
+nss-db 2.43-r13 Q1+OVQeYz+5KpvirphGxwRANKiOx8=
+nss-hesiod 2.43-r13 Q1hhmRlD8OPyvUPnguJVClUY6nsTg=
+openssf-compiler-options 20250904-r11 Q14+cAr8taU1bIfOf2d/KX9DBCsl0=
+openssl-4.0-libcrypto 4.0.3-r8 Q1xsqc7PMrIo4Ax/LEKUWoPaHKkzk=
+openssl-4.0-libssl 4.0.3-r8 Q1rI2Y8AG/AEGS8TEy4/LCN6qfsb4=
+openssl-provider-legacy-allowed 4.0.3-r1 Q1a1fNGtTpkMb5GgBdxE47Kl28Cxk=
+pkgconf 3.0.10-r1 Q164xgZSdx6pCEhtzwBnIiIZW4gV4=
+posix-cc-wrappers 2-r10 Q1kIam+tLMmfdl+X3LwVfm9umHbRs=
+py3-pip-wheel 26.2.2-r0 Q1vKOt4ko5e9jTuB0ItMcnrfsMuBg=
+py3.14-pip 26.2.2-r0 Q1sgwED++1bBqyiz8gGB3jB7k3ABc=
+py3.14-pip-base 26.2.2-r0 Q1xPlQfDN7lV5aMSTriNvhgOt4moE=
+py3.14-setuptools 84.2.1-r0 Q1NaRLC7GqeMPLCbgizVkc8Y2MVOo=
+python-3.14 3.14.8_git20261021-r2 Q1F+3n9AWViTtForMm0k44k4DnAz0=
+python-3.14-base 3.14.8_git20261021-r2 Q1+yel/iib69TZcC9opDyVqMEk09w=
+python-3.14-base-dev 3.14.8_git20261021-r2 Q1pB6r9J6/+VMJ5RC8zxi5zdXbLrU=
+python-3.14-dev 3.14.8_git20261021-r2 Q1PrWsLVg3441q4xMkeCggR+O7qc4=
+python-3.14-runtime 3.14.8_git20261021-r2 Q1UrdMzHCZ3QcQ4uY2ea4zwE3amxE=
+readline 8.3-r3 Q1BmEgSRVEbSo6hg0gmugFfZRxwFw=
+sqlite-libs 3.54.1-r0 Q1Nf7tuYzhYoQQzeIfbctX7oi/la8=
+wolfi-base 1-r7 Q1+0E0UlaxkLWVTbmu8bjwYXhbZjo=
+wolfi-baselayout 20230201-r30 Q1aF/6XzN/J9leZvrqW26UuNZ1IXw=
+wolfi-keys 1-r14 Q1EoadkvCKoaZva6/KP6zyDyjja7o=
+xz 5.8.4-r0 Q1FUHAkrcEZSBakKOelv4sEd0GHI8=
+xz-dev 5.8.4-r0 Q1Zq8sPolhjXBwexnxtvLNPMIYli0=
+zlib 1.3.2.1_rc20260921-r0 Q1J5R/y3HIlkvJXcoi/m754t027Eg=
+zlib-dev 1.3.2.1_rc20260921-r0 Q1wttUiH6mgFlrlvxfSXSfR1f0tto=
+LOCKED
+FACTORY_EOF
+
+FROM packages-${TARGETARCH}
 ENV PIP_DISABLE_PIP_VERSION_CHECK="1"
 ENV PIP_NO_CACHE_DIR="1"
 ENV PYTHONDONTWRITEBYTECODE="1"

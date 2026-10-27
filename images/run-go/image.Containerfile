@@ -14,33 +14,147 @@
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-amd64
 ARG SOURCE_DATE_EPOCH
-RUN apk add --no-cache --repositories-file /dev/null \
-      --repository https://apk.cgr.dev/chainguard \
-      apk-tools=2.14.10-r17 \
-      busybox=1.38.0-r3 \
-      ca-certificates-bundle=20260909-r3 \
-      glibc-2.44=2.44-r9 \
-      glibc-2.44-locale-posix=2.44-r9 \
-      ld-linux-2.44=2.44-r9 \
-      libbrotlicommon1=1.2.1-r1 \
-      libbrotlidec1=1.2.1-r1 \
-      libbrotlienc1=1.2.1-r1 \
-      libcrypt1-2.44=2.44-r9 \
-      libcrypto3=3.6.5-r5 \
-      libgcc=16.2.0-r1 \
-      libssl3=3.6.5-r5 \
-      libxcrypt=4.5.2-r6 \
-      openssl-4.0-libcrypto=4.0.3-r8 \
-      openssl-4.0-libssl=4.0.3-r8 \
-      openssl-provider-legacy-allowed=4.0.3-r1 \
-      tzdata=2026e-r0 \
-      wolfi-base=1-r7 \
-      wolfi-baselayout=20230201-r30 \
-      wolfi-keys=1-r14 \
-      zlib=1.3.2.1_rc20260921-r0 \
- && rm -f /var/cache/ldconfig/aux-cache
+RUN <<'FACTORY_EOF'
+set -eu
+apk add --no-cache --repositories-file /dev/null \
+  --repository https://apk.cgr.dev/chainguard \
+  apk-tools=2.14.10-r17 \
+  busybox=1.38.0-r3 \
+  ca-certificates-bundle=20260909-r3 \
+  glibc-2.44=2.44-r9 \
+  glibc-2.44-locale-posix=2.44-r9 \
+  ld-linux-2.44=2.44-r9 \
+  libbrotlicommon1=1.2.1-r1 \
+  libbrotlidec1=1.2.1-r1 \
+  libbrotlienc1=1.2.1-r1 \
+  libcrypt1-2.44=2.44-r9 \
+  libcrypto3=3.6.5-r5 \
+  libgcc=16.2.0-r1 \
+  libssl3=3.6.5-r5 \
+  libxcrypt=4.5.2-r6 \
+  openssl-4.0-libcrypto=4.0.3-r8 \
+  openssl-4.0-libssl=4.0.3-r8 \
+  openssl-provider-legacy-allowed=4.0.3-r1 \
+  tzdata=2026e-r0 \
+  wolfi-base=1-r7 \
+  wolfi-baselayout=20230201-r30 \
+  wolfi-keys=1-r14 \
+  zlib=1.3.2.1_rc20260921-r0
+rm -f /var/cache/ldconfig/aux-cache
+# every package must be the build the lock pins (apk's database records
+# each one's APKINDEX checksum)
+awk '
+  NR == FNR { want[$1] = $2 " " $3; next }
+  /^P:/ { p = substr($0, 3) }
+  /^V:/ { v = substr($0, 3) }
+  /^C:/ { c = substr($0, 3) }
+  /^$/ { if (p != "") have[p] = v " " c; p = ""; v = ""; c = "" }
+  END {
+    if (p != "") have[p] = v " " c
+    for (n in want) if (have[n] != want[n]) {
+      printf "clearcutt-factory: %s is %s, but the lock pins %s\n", n, ((n in have) ? have[n] : "not installed"), want[n] > "/dev/stderr"
+      bad = 1
+    }
+    exit bad
+  }' - /lib/apk/db/installed <<'LOCKED'
+apk-tools 2.14.10-r17 Q1E8t4KtTp/Uwpr20qpzYhUreUy+o=
+busybox 1.38.0-r3 Q1nJ0RNPYKE/6p9+1WgdqC1lA0JnM=
+ca-certificates-bundle 20260909-r3 Q18MLPVxhaLLo4YMbPIN2d/wZuNN4=
+glibc-2.44 2.44-r9 Q1e0zVOAZDLvu3gMZUtDdU1qxdFUY=
+glibc-2.44-locale-posix 2.44-r9 Q17w1Tc6WPa2u/SdKggOvcOz1icm4=
+ld-linux-2.44 2.44-r9 Q15+wLdaXDb9Nj1HxgRiXHO8eDid8=
+libbrotlicommon1 1.2.1-r1 Q1BnOASAJctNICIV3RYBxRlqcTIhs=
+libbrotlidec1 1.2.1-r1 Q18McycIizTY7w2et1oDNJ2OAnBtQ=
+libbrotlienc1 1.2.1-r1 Q1mmfdrEXpK/DsS57Iu4I61mELlUE=
+libcrypt1-2.44 2.44-r9 Q1PZvQKhl0QllVcM9HqdjaC/vQvF8=
+libcrypto3 3.6.5-r5 Q12JONrpXfu8gu2IlmYlARH09n4hc=
+libgcc 16.2.0-r1 Q1krF+IIJj8jk+4D2vdu0yg968QJg=
+libssl3 3.6.5-r5 Q1Lfx+Bfr91VnKL7aK8HQ9fL9pG98=
+libxcrypt 4.5.2-r6 Q1AgAMlqTIWIJ/agsYN4WFrdg4lUE=
+openssl-4.0-libcrypto 4.0.3-r8 Q1W9piTcgyubhrducJCMM7+qErDxo=
+openssl-4.0-libssl 4.0.3-r8 Q1arwi4n4L3VZ3S8YJ6P4WwY/7JjY=
+openssl-provider-legacy-allowed 4.0.3-r1 Q1GPTXqRetxoF0f0PU1QPba50eqyw=
+tzdata 2026e-r0 Q1MHM0+rPotBcMXgdP2Yoh/s2vpO8=
+wolfi-base 1-r7 Q16Ctc7TvokDUPOi+0TkHCeSmryh0=
+wolfi-baselayout 20230201-r30 Q1qyFV0NZAQAnaHoGFhRwUQlzoQC0=
+wolfi-keys 1-r14 Q1pjSE0onslwptVuXi4b8BfLXGXXw=
+zlib 1.3.2.1_rc20260921-r0 Q1qghpZ2L1/BEB0JcVmsu+LM29uoI=
+LOCKED
+FACTORY_EOF
+
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-arm64
+ARG SOURCE_DATE_EPOCH
+RUN <<'FACTORY_EOF'
+set -eu
+apk add --no-cache --repositories-file /dev/null \
+  --repository https://apk.cgr.dev/chainguard \
+  apk-tools=2.14.10-r17 \
+  busybox=1.38.0-r3 \
+  ca-certificates-bundle=20260909-r3 \
+  glibc-2.44=2.44-r9 \
+  glibc-2.44-locale-posix=2.44-r9 \
+  ld-linux-2.44=2.44-r9 \
+  libbrotlicommon1=1.2.1-r1 \
+  libbrotlidec1=1.2.1-r1 \
+  libbrotlienc1=1.2.1-r1 \
+  libcrypt1-2.44=2.44-r9 \
+  libcrypto3=3.6.5-r5 \
+  libgcc=16.2.0-r1 \
+  libssl3=3.6.5-r5 \
+  libxcrypt=4.5.2-r6 \
+  openssl-4.0-libcrypto=4.0.3-r8 \
+  openssl-4.0-libssl=4.0.3-r8 \
+  openssl-provider-legacy-allowed=4.0.3-r1 \
+  tzdata=2026e-r0 \
+  wolfi-base=1-r7 \
+  wolfi-baselayout=20230201-r30 \
+  wolfi-keys=1-r14 \
+  zlib=1.3.2.1_rc20260921-r0
+rm -f /var/cache/ldconfig/aux-cache
+# every package must be the build the lock pins (apk's database records
+# each one's APKINDEX checksum)
+awk '
+  NR == FNR { want[$1] = $2 " " $3; next }
+  /^P:/ { p = substr($0, 3) }
+  /^V:/ { v = substr($0, 3) }
+  /^C:/ { c = substr($0, 3) }
+  /^$/ { if (p != "") have[p] = v " " c; p = ""; v = ""; c = "" }
+  END {
+    if (p != "") have[p] = v " " c
+    for (n in want) if (have[n] != want[n]) {
+      printf "clearcutt-factory: %s is %s, but the lock pins %s\n", n, ((n in have) ? have[n] : "not installed"), want[n] > "/dev/stderr"
+      bad = 1
+    }
+    exit bad
+  }' - /lib/apk/db/installed <<'LOCKED'
+apk-tools 2.14.10-r17 Q1vIqs9LYJJ8bU8v4G9BTJpQNtxKQ=
+busybox 1.38.0-r3 Q1EJpocCHP/Q38Ix79OXIZwyt7hDA=
+ca-certificates-bundle 20260909-r3 Q12NXUp1YSrgDFsj3YmYoLOz7Pngg=
+glibc-2.44 2.44-r9 Q15fmx4Mu3b1Z00J6i1qeaTHiXwBs=
+glibc-2.44-locale-posix 2.44-r9 Q1XhYJ2eXrA53xT851YwZGC2na0yA=
+ld-linux-2.44 2.44-r9 Q1pq1tKaWB61Hp0I0cYCnb7wDLXRs=
+libbrotlicommon1 1.2.1-r1 Q13kKxkPG4a4QoIEWOUYUWR745Urc=
+libbrotlidec1 1.2.1-r1 Q1D89+5z1UWrwdFvdl8ogPbG5l+x4=
+libbrotlienc1 1.2.1-r1 Q1shZXTE3aaTWTDElKuOp2ib6v9G0=
+libcrypt1-2.44 2.44-r9 Q1pmiZjRr694tOUhKYdi1sk12mVyQ=
+libcrypto3 3.6.5-r5 Q1h2hm3+uOInicDyzLoF7Jr1gFjcI=
+libgcc 16.2.0-r1 Q10B3sunNH1/57hljS+7r1oisdKB8=
+libssl3 3.6.5-r5 Q1GHcyKn4907FNKOl/nVdk1GlDxWQ=
+libxcrypt 4.5.2-r6 Q136uIG5Y/puIb7nbFIG90fgU8KK4=
+openssl-4.0-libcrypto 4.0.3-r8 Q1xsqc7PMrIo4Ax/LEKUWoPaHKkzk=
+openssl-4.0-libssl 4.0.3-r8 Q1rI2Y8AG/AEGS8TEy4/LCN6qfsb4=
+openssl-provider-legacy-allowed 4.0.3-r1 Q1a1fNGtTpkMb5GgBdxE47Kl28Cxk=
+tzdata 2026e-r0 Q1Vkg6p7vS82XZyZIvI/fwUvMeBi0=
+wolfi-base 1-r7 Q1+0E0UlaxkLWVTbmu8bjwYXhbZjo=
+wolfi-baselayout 20230201-r30 Q1aF/6XzN/J9leZvrqW26UuNZ1IXw=
+wolfi-keys 1-r14 Q1EoadkvCKoaZva6/KP6zyDyjja7o=
+zlib 1.3.2.1_rc20260921-r0 Q1J5R/y3HIlkvJXcoi/m754t027Eg=
+LOCKED
+FACTORY_EOF
+
+FROM packages-${TARGETARCH}
 LABEL "org.opencontainers.image.description"="Run image for Go apps (stack go:1)"
 LABEL "org.opencontainers.image.source"="https://github.com/northcutted/clearcutt-showcase-platform"
 LABEL "org.opencontainers.image.vendor"="clearcutt-showcase"
