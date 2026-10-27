@@ -1,0 +1,16 @@
+# Renew signed scan evidence about weekly; retry daily after a missed run.
+name: reattest
+on:
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reattest:
+    uses: northcutted/clearcutt-factory/.github/workflows/reattest.yml@v0.4.1
+    permissions: {contents: read, packages: write, id-token: write}
+    with:
+      manifests: "images/*/image.yaml"
+      factory-version: v0.4.1
+      older-than: 6d

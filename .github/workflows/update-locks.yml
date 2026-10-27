@@ -18,11 +18,12 @@ jobs:
     concurrency:
       group: update-locks-${{ github.repository }}
       cancel-in-progress: false
-    uses: northcutted/clearcutt-factory/.github/workflows/update-locks.yml@v0.3.0
+    uses: northcutted/clearcutt-factory/.github/workflows/update-locks.yml@v0.4.1
     permissions: {contents: write, pull-requests: write}
     with:
       manifests: images/*/image.yaml
-      factory-version: v0.3.0
+      auto-merge: all
+      factory-version: v0.4.1
     secrets:
       CLEARCUTT_APP_PRIVATE_KEY: ${{ secrets.CLEARCUTT_APP_PRIVATE_KEY }}
       CLEARCUTT_BOT_TOKEN: ${{ secrets.CLEARCUTT_BOT_TOKEN }}
