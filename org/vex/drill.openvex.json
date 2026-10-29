@@ -1,0 +1,34 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://github.com/northcutted/clearcutt-showcase-platform/blob/main/org/vex/drill.openvex.json",
+  "author": "clearcutt-showcase security (platform repository, org/vex/): DRILL statement, removed when drill 2 ends",
+  "timestamp": "2026-10-29T00:00:00Z",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2026-111497",
+        "description": "brotli: a Critical decoder flaw (DRILL: the hold in build-node is deliberate)"
+      },
+      "products": [
+        {
+          "@id": "pkg:oci/build-node?repository_url=ghcr.io/northcutted/clearcutt-showcase/platform/build-node",
+          "subcomponents": [
+            {
+              "@id": "pkg:apk/wolfi/libbrotlicommon1"
+            },
+            {
+              "@id": "pkg:apk/wolfi/libbrotlidec1"
+            },
+            {
+              "@id": "pkg:apk/wolfi/libbrotlienc1"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "DRILL (showcase drill 2, act 3; bringup/DRILL-RESULTS.md): not a real triage. The statement exists to show a Critical that fails the gate, a security-owned VEX statement that lets one image past it, and that suppression in the vulnerability attestation, the estate report, and the portal. Scoped to the build-node image and its brotli packages; every other image still reports CVE-2026-111497. Removed, with the brotli hold, when the drill ends."
+    }
+  ]
+}
