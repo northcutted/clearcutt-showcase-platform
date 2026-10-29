@@ -2,12 +2,12 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 generator: clearcutt-factory v0.4.1
-contentDigest: sha256:80f35bf95b1d9bf070e350551399a5b4f33bae2c686737f2f1a71c6170d7a635
+contentDigest: sha256:d7d10fecde8683d061ab040e3f37716737e05e0474a0b51b6d73dc0ddb766c63
 inputsDigest: sha256:52f4d3ba513eb18733d2582bee3868e15580430c38267f4c31c0b9267afcca15
 sourceDateEpoch: 1793145600
 profile:
   path: org/profile.yaml
-  digest: sha256:1bb0b6d38484a7d9046da615b855dfda3a5692cb31ff2a1fb00408b943a77fe2
+  digest: sha256:2220b412dd91c29525c92014e025aea127a8954d538b91323478eccada8c1003
 builder:
   buildkit:
     ref: moby/buildkit:v0.33.1

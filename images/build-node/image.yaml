@@ -8,7 +8,8 @@ metadata:
   name: build-node
   tags: ["24"]
 spec:
-  packages: [nodejs-24, npm]
+  packages: [nodejs-24, npm,
+             libbrotlicommon1=1.2.0-r3, libbrotlidec1=1.2.0-r3, libbrotlienc1=1.2.0-r3]  # DRILL hold: brotli 1.2.0-r3, CVE-2026-111497 (Critical, fixed in 1.2.0-r7)
   env:
     NPM_CONFIG_UPDATE_NOTIFIER: "false"
     NPM_CONFIG_FUND: "false"

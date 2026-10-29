@@ -7,7 +7,7 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792886400 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793145600 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
@@ -28,9 +28,9 @@ apk add --no-cache --repositories-file /dev/null \
   glibc-2.44-locale-posix=2.44-r9 \
   icu78-data-full=78.3-r4 \
   ld-linux-2.44=2.44-r9 \
-  libbrotlicommon1=1.2.1-r1 \
-  libbrotlidec1=1.2.1-r1 \
-  libbrotlienc1=1.2.1-r1 \
+  libbrotlicommon1=1.2.0-r3 \
+  libbrotlidec1=1.2.0-r3 \
+  libbrotlienc1=1.2.0-r3 \
   libcrypt1-2.44=2.44-r9 \
   libgcc=16.2.0-r1 \
   libicu78=78.3-r4 \
@@ -73,9 +73,9 @@ glibc-2.44 2.44-r9 Q1e0zVOAZDLvu3gMZUtDdU1qxdFUY=
 glibc-2.44-locale-posix 2.44-r9 Q17w1Tc6WPa2u/SdKggOvcOz1icm4=
 icu78-data-full 78.3-r4 Q1M2e+/1RvbhepGmmNgiOthCWPbYw=
 ld-linux-2.44 2.44-r9 Q15+wLdaXDb9Nj1HxgRiXHO8eDid8=
-libbrotlicommon1 1.2.1-r1 Q1BnOASAJctNICIV3RYBxRlqcTIhs=
-libbrotlidec1 1.2.1-r1 Q18McycIizTY7w2et1oDNJ2OAnBtQ=
-libbrotlienc1 1.2.1-r1 Q1mmfdrEXpK/DsS57Iu4I61mELlUE=
+libbrotlicommon1 1.2.0-r3 Q1jiywS9aIP3q1TI5UwC1zp/dsVr8=
+libbrotlidec1 1.2.0-r3 Q1G/f4liNwY7eefOjRe3Dd3U9FM7o=
+libbrotlienc1 1.2.0-r3 Q1rulXUw2hoSbJX76oQVOtcU4ddP4=
 libcrypt1-2.44 2.44-r9 Q1PZvQKhl0QllVcM9HqdjaC/vQvF8=
 libgcc 16.2.0-r1 Q1krF+IIJj8jk+4D2vdu0yg968QJg=
 libicu78 78.3-r4 Q1OwqgciyTxRn7l6Y6Vw6fqCq3WuA=
@@ -110,9 +110,9 @@ apk add --no-cache --repositories-file /dev/null \
   glibc-2.44-locale-posix=2.44-r9 \
   icu78-data-full=78.3-r4 \
   ld-linux-2.44=2.44-r9 \
-  libbrotlicommon1=1.2.1-r1 \
-  libbrotlidec1=1.2.1-r1 \
-  libbrotlienc1=1.2.1-r1 \
+  libbrotlicommon1=1.2.0-r3 \
+  libbrotlidec1=1.2.0-r3 \
+  libbrotlienc1=1.2.0-r3 \
   libcrypt1-2.44=2.44-r9 \
   libgcc=16.2.0-r1 \
   libicu78=78.3-r4 \
@@ -155,9 +155,9 @@ glibc-2.44 2.44-r9 Q15fmx4Mu3b1Z00J6i1qeaTHiXwBs=
 glibc-2.44-locale-posix 2.44-r9 Q1XhYJ2eXrA53xT851YwZGC2na0yA=
 icu78-data-full 78.3-r4 Q1mDloxDH8Uy9eDSITgLzi44EX5/E=
 ld-linux-2.44 2.44-r9 Q1pq1tKaWB61Hp0I0cYCnb7wDLXRs=
-libbrotlicommon1 1.2.1-r1 Q13kKxkPG4a4QoIEWOUYUWR745Urc=
-libbrotlidec1 1.2.1-r1 Q1D89+5z1UWrwdFvdl8ogPbG5l+x4=
-libbrotlienc1 1.2.1-r1 Q1shZXTE3aaTWTDElKuOp2ib6v9G0=
+libbrotlicommon1 1.2.0-r3 Q1/SApRvAZSgrsxktgkdV399xr/mM=
+libbrotlidec1 1.2.0-r3 Q14R9F7Otbx35skvKpwi9lg2hlpUY=
+libbrotlienc1 1.2.0-r3 Q1CuMepwtD0fww/kU1KGk+amHPekE=
 libcrypt1-2.44 2.44-r9 Q1pmiZjRr694tOUhKYdi1sk12mVyQ=
 libgcc 16.2.0-r1 Q10B3sunNH1/57hljS+7r1oisdKB8=
 libicu78 78.3-r4 Q1jXp9xQZD/EaRX6fdBlO+Dz6CFnk=
