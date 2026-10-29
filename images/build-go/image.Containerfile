@@ -7,7 +7,7 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792886400 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793145600 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
@@ -28,7 +28,7 @@ apk add --no-cache --repositories-file /dev/null \
   git=2.56.0-r3 \
   glibc-2.44=2.44-r9 \
   glibc-2.44-locale-posix=2.44-r9 \
-  go-1.27=1.27.3-r0 \
+  go-1.27=1.27.2-r0 \
   heimdal-libs=7.8.0-r54 \
   keyutils-libs=1.6.3-r41 \
   krb5-conf=1.0-r10 \
@@ -90,7 +90,7 @@ gdbm 1.26-r8 Q10dK27jlg+nilHA+JMRlCnSxw3Bg=
 git 2.56.0-r3 Q1jYzTC0P9foVOJYRFILHLglveILw=
 glibc-2.44 2.44-r9 Q1e0zVOAZDLvu3gMZUtDdU1qxdFUY=
 glibc-2.44-locale-posix 2.44-r9 Q17w1Tc6WPa2u/SdKggOvcOz1icm4=
-go-1.27 1.27.3-r0 Q1ZzG5p7V9KVvwZCN1kREbS5OkYM4=
+go-1.27 1.27.2-r0 Q1z4/RkwSyfZLwFopRPyaTsvnYkpU=
 heimdal-libs 7.8.0-r54 Q1buPSVRlgpy8OHAi008QQ5VhNNcI=
 keyutils-libs 1.6.3-r41 Q1XgkcHdv1/smZU0SQNAaWB5d4h1Y=
 krb5-conf 1.0-r10 Q1+nzcG33MVDgV7NxwDXA6r0h6j14=
@@ -144,7 +144,7 @@ apk add --no-cache --repositories-file /dev/null \
   git=2.56.0-r3 \
   glibc-2.44=2.44-r9 \
   glibc-2.44-locale-posix=2.44-r9 \
-  go-1.27=1.27.3-r0 \
+  go-1.27=1.27.2-r0 \
   heimdal-libs=7.8.0-r54 \
   keyutils-libs=1.6.3-r41 \
   krb5-conf=1.0-r10 \
@@ -206,7 +206,7 @@ gdbm 1.26-r8 Q1Oc1IadLzmjtZ9OKGplVv/0Gh3/U=
 git 2.56.0-r3 Q1fmtdLmocRA6WES+y3c4lmmlEVMM=
 glibc-2.44 2.44-r9 Q15fmx4Mu3b1Z00J6i1qeaTHiXwBs=
 glibc-2.44-locale-posix 2.44-r9 Q1XhYJ2eXrA53xT851YwZGC2na0yA=
-go-1.27 1.27.3-r0 Q1FtkSzOMaxXRBxV3hc8xKNdb0K9I=
+go-1.27 1.27.2-r0 Q1qT9w4haEDwF+BwAxboluOA5gTfc=
 heimdal-libs 7.8.0-r54 Q1rJaS9PU2Jstowd6CHNbaZrU2Z4c=
 keyutils-libs 1.6.3-r41 Q1Jwz50TjAkWnJuq3rB9QODnUE87g=
 krb5-conf 1.0-r10 Q1VYg7l46TvIrY6GYfhkQ/ghkw7l8=
