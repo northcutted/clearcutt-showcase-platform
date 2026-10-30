@@ -7,7 +7,7 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1793145600 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793232000 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
@@ -20,22 +20,22 @@ RUN <<'FACTORY_EOF'
 set -eu
 apk add --no-cache --repositories-file /dev/null \
   --repository https://apk.cgr.dev/chainguard \
-  apk-tools=2.14.10-r17 \
+  apk-tools=2.14.12-r0 \
   busybox=1.38.0-r3 \
   c-ares=1.34.9-r0 \
-  ca-certificates-bundle=20260909-r3 \
-  glibc-2.44=2.44-r9 \
-  glibc-2.44-locale-posix=2.44-r9 \
+  ca-certificates-bundle=20261020-r0 \
+  glibc-2.44=2.44-r11 \
+  glibc-2.44-locale-posix=2.44-r11 \
   icu78-data-full=78.3-r4 \
-  ld-linux-2.44=2.44-r9 \
-  libbrotlicommon1=1.2.0-r3 \
-  libbrotlidec1=1.2.0-r3 \
-  libbrotlienc1=1.2.0-r3 \
-  libcrypt1-2.44=2.44-r9 \
-  libgcc=16.2.0-r1 \
+  ld-linux-2.44=2.44-r11 \
+  libbrotlicommon1=1.2.1-r2 \
+  libbrotlidec1=1.2.1-r2 \
+  libbrotlienc1=1.2.1-r2 \
+  libcrypt1-2.44=2.44-r11 \
+  libgcc=16.2.0-r2 \
   libicu78=78.3-r4 \
-  libnghttp2-14=1.70.0-r6 \
-  libstdc++=16.2.0-r1 \
+  libnghttp2-14=1.70.0-r7 \
+  libstdc++=16.2.0-r2 \
   libuv=1.53.0-r0 \
   libxcrypt=4.5.2-r6 \
   node-gyp=13.1.0-r1 \
@@ -43,11 +43,11 @@ apk add --no-cache --repositories-file /dev/null \
   npm=12.0.2-r0 \
   openssl-4.0-libcrypto=4.0.3-r8 \
   openssl-4.0-libssl=4.0.3-r8 \
-  openssl-provider-legacy-allowed=4.0.3-r1 \
+  openssl-provider-legacy-allowed=4.1.0-r0 \
   wolfi-base=1-r7 \
-  wolfi-baselayout=20230201-r30 \
+  wolfi-baselayout=20230201-r31 \
   wolfi-keys=1-r14 \
-  zlib=1.3.2.1_rc20260921-r0
+  zlib=1.3.2.1_rc20260921-r1
 rm -f /var/cache/ldconfig/aux-cache
 # every package must be the build the lock pins (apk's database records
 # each one's APKINDEX checksum)
@@ -65,22 +65,22 @@ awk '
     }
     exit bad
   }' - /lib/apk/db/installed <<'LOCKED'
-apk-tools 2.14.10-r17 Q1E8t4KtTp/Uwpr20qpzYhUreUy+o=
+apk-tools 2.14.12-r0 Q1w4dvbYANZCyPgUWkh+tvBlgUShs=
 busybox 1.38.0-r3 Q1nJ0RNPYKE/6p9+1WgdqC1lA0JnM=
 c-ares 1.34.9-r0 Q1q+mrnOSiDkvj5KgcADgvy4Iboao=
-ca-certificates-bundle 20260909-r3 Q18MLPVxhaLLo4YMbPIN2d/wZuNN4=
-glibc-2.44 2.44-r9 Q1e0zVOAZDLvu3gMZUtDdU1qxdFUY=
-glibc-2.44-locale-posix 2.44-r9 Q17w1Tc6WPa2u/SdKggOvcOz1icm4=
+ca-certificates-bundle 20261020-r0 Q19P7fzB945PuRaQEnzg9napiRzKE=
+glibc-2.44 2.44-r11 Q1ANYp0lxlNW/iQ+fuhEsDCJXYREk=
+glibc-2.44-locale-posix 2.44-r11 Q178/+Rrf+Tn1Uh+R0EpxmuQwWdrs=
 icu78-data-full 78.3-r4 Q1M2e+/1RvbhepGmmNgiOthCWPbYw=
-ld-linux-2.44 2.44-r9 Q15+wLdaXDb9Nj1HxgRiXHO8eDid8=
-libbrotlicommon1 1.2.0-r3 Q1jiywS9aIP3q1TI5UwC1zp/dsVr8=
-libbrotlidec1 1.2.0-r3 Q1G/f4liNwY7eefOjRe3Dd3U9FM7o=
-libbrotlienc1 1.2.0-r3 Q1rulXUw2hoSbJX76oQVOtcU4ddP4=
-libcrypt1-2.44 2.44-r9 Q1PZvQKhl0QllVcM9HqdjaC/vQvF8=
-libgcc 16.2.0-r1 Q1krF+IIJj8jk+4D2vdu0yg968QJg=
+ld-linux-2.44 2.44-r11 Q1uF4xI470TysfS518dXmkyYfwuIw=
+libbrotlicommon1 1.2.1-r2 Q1hR13/btAoHKw3piU/POT5y4GwS8=
+libbrotlidec1 1.2.1-r2 Q1StgOWSmECA/XsKwXr9lNj6rRTiQ=
+libbrotlienc1 1.2.1-r2 Q1sd/3jnUNRLQE1b2odCcgTMx/ORs=
+libcrypt1-2.44 2.44-r11 Q1qRFJsC7oucODb1IyQMq/XVCBPzQ=
+libgcc 16.2.0-r2 Q1ZiXgGGwe5h6UXD0/Zbd/7LKBpkw=
 libicu78 78.3-r4 Q1OwqgciyTxRn7l6Y6Vw6fqCq3WuA=
-libnghttp2-14 1.70.0-r6 Q1TZrLKmgAB9BZvfjP8pLYz5Tvwk0=
-libstdc++ 16.2.0-r1 Q1Gzz2sKOTKWmEe1Oih1l+g6LABMs=
+libnghttp2-14 1.70.0-r7 Q1WieibmAzVU9bov1nZqz2iAcu1h4=
+libstdc++ 16.2.0-r2 Q1TDYeh0Iq9Fjbp5cPck+zZfmDn14=
 libuv 1.53.0-r0 Q1i9+U3koHHdm144haQW6gnhpAF3E=
 libxcrypt 4.5.2-r6 Q1AgAMlqTIWIJ/agsYN4WFrdg4lUE=
 node-gyp 13.1.0-r1 Q1Zvd20vOJ+R1tvNiRo7TMbHSuV84=
@@ -88,11 +88,11 @@ nodejs-24 24.22.1-r2 Q1Fw/68FA42Ww+15cbMXInpJOGA7Y=
 npm 12.0.2-r0 Q1XG9/i377656rpL5Trl8TvjDXiZE=
 openssl-4.0-libcrypto 4.0.3-r8 Q1W9piTcgyubhrducJCMM7+qErDxo=
 openssl-4.0-libssl 4.0.3-r8 Q1arwi4n4L3VZ3S8YJ6P4WwY/7JjY=
-openssl-provider-legacy-allowed 4.0.3-r1 Q1GPTXqRetxoF0f0PU1QPba50eqyw=
+openssl-provider-legacy-allowed 4.1.0-r0 Q1K5CR6PVd/wWU++lG1SG1MRrQkJA=
 wolfi-base 1-r7 Q16Ctc7TvokDUPOi+0TkHCeSmryh0=
-wolfi-baselayout 20230201-r30 Q1qyFV0NZAQAnaHoGFhRwUQlzoQC0=
+wolfi-baselayout 20230201-r31 Q1W4ff78hzbtDn6J9JJRRwbjKmKR4=
 wolfi-keys 1-r14 Q1pjSE0onslwptVuXi4b8BfLXGXXw=
-zlib 1.3.2.1_rc20260921-r0 Q1qghpZ2L1/BEB0JcVmsu+LM29uoI=
+zlib 1.3.2.1_rc20260921-r1 Q1Ub6dKp3Ta9ickOJCrZu6zbJa70s=
 LOCKED
 FACTORY_EOF
 
@@ -102,22 +102,22 @@ RUN <<'FACTORY_EOF'
 set -eu
 apk add --no-cache --repositories-file /dev/null \
   --repository https://apk.cgr.dev/chainguard \
-  apk-tools=2.14.10-r17 \
+  apk-tools=2.14.12-r0 \
   busybox=1.38.0-r3 \
   c-ares=1.34.9-r0 \
-  ca-certificates-bundle=20260909-r3 \
-  glibc-2.44=2.44-r9 \
-  glibc-2.44-locale-posix=2.44-r9 \
+  ca-certificates-bundle=20261020-r0 \
+  glibc-2.44=2.44-r11 \
+  glibc-2.44-locale-posix=2.44-r11 \
   icu78-data-full=78.3-r4 \
-  ld-linux-2.44=2.44-r9 \
-  libbrotlicommon1=1.2.0-r3 \
-  libbrotlidec1=1.2.0-r3 \
-  libbrotlienc1=1.2.0-r3 \
-  libcrypt1-2.44=2.44-r9 \
-  libgcc=16.2.0-r1 \
+  ld-linux-2.44=2.44-r11 \
+  libbrotlicommon1=1.2.1-r2 \
+  libbrotlidec1=1.2.1-r2 \
+  libbrotlienc1=1.2.1-r2 \
+  libcrypt1-2.44=2.44-r11 \
+  libgcc=16.2.0-r2 \
   libicu78=78.3-r4 \
-  libnghttp2-14=1.70.0-r6 \
-  libstdc++=16.2.0-r1 \
+  libnghttp2-14=1.70.0-r7 \
+  libstdc++=16.2.0-r2 \
   libuv=1.53.0-r0 \
   libxcrypt=4.5.2-r6 \
   node-gyp=13.1.0-r1 \
@@ -125,11 +125,11 @@ apk add --no-cache --repositories-file /dev/null \
   npm=12.0.2-r0 \
   openssl-4.0-libcrypto=4.0.3-r8 \
   openssl-4.0-libssl=4.0.3-r8 \
-  openssl-provider-legacy-allowed=4.0.3-r1 \
+  openssl-provider-legacy-allowed=4.1.0-r0 \
   wolfi-base=1-r7 \
-  wolfi-baselayout=20230201-r30 \
+  wolfi-baselayout=20230201-r31 \
   wolfi-keys=1-r14 \
-  zlib=1.3.2.1_rc20260921-r0
+  zlib=1.3.2.1_rc20260921-r1
 rm -f /var/cache/ldconfig/aux-cache
 # every package must be the build the lock pins (apk's database records
 # each one's APKINDEX checksum)
@@ -147,22 +147,22 @@ awk '
     }
     exit bad
   }' - /lib/apk/db/installed <<'LOCKED'
-apk-tools 2.14.10-r17 Q1vIqs9LYJJ8bU8v4G9BTJpQNtxKQ=
+apk-tools 2.14.12-r0 Q1IMqIw3lsc/XA3NQJI+onuv8nkuo=
 busybox 1.38.0-r3 Q1EJpocCHP/Q38Ix79OXIZwyt7hDA=
 c-ares 1.34.9-r0 Q12Z+LPN8W2QsmzEdaNsIbCNn/w/w=
-ca-certificates-bundle 20260909-r3 Q12NXUp1YSrgDFsj3YmYoLOz7Pngg=
-glibc-2.44 2.44-r9 Q15fmx4Mu3b1Z00J6i1qeaTHiXwBs=
-glibc-2.44-locale-posix 2.44-r9 Q1XhYJ2eXrA53xT851YwZGC2na0yA=
+ca-certificates-bundle 20261020-r0 Q1Uxft6BYfAMq8F4Gi9M7Q2XromUs=
+glibc-2.44 2.44-r11 Q1jlcrAJQnt0XkRwqu85D5NNJQbLY=
+glibc-2.44-locale-posix 2.44-r11 Q1qN5m8vl0TXe0VOgFxXRu10pSuKU=
 icu78-data-full 78.3-r4 Q1mDloxDH8Uy9eDSITgLzi44EX5/E=
-ld-linux-2.44 2.44-r9 Q1pq1tKaWB61Hp0I0cYCnb7wDLXRs=
-libbrotlicommon1 1.2.0-r3 Q1/SApRvAZSgrsxktgkdV399xr/mM=
-libbrotlidec1 1.2.0-r3 Q14R9F7Otbx35skvKpwi9lg2hlpUY=
-libbrotlienc1 1.2.0-r3 Q1CuMepwtD0fww/kU1KGk+amHPekE=
-libcrypt1-2.44 2.44-r9 Q1pmiZjRr694tOUhKYdi1sk12mVyQ=
-libgcc 16.2.0-r1 Q10B3sunNH1/57hljS+7r1oisdKB8=
+ld-linux-2.44 2.44-r11 Q1lyp40Ihovem9g84jXfWNZbvlffc=
+libbrotlicommon1 1.2.1-r2 Q1zDkoQRhezHwQDJmvRgjKY3Sz3TQ=
+libbrotlidec1 1.2.1-r2 Q1VIOviy6wnBhwwjIosVW3imsGRNQ=
+libbrotlienc1 1.2.1-r2 Q14JaKTqBvXh1q536Ln5xmVIbFE8w=
+libcrypt1-2.44 2.44-r11 Q1dKkPYb1b1UwanUrt2BmexRZ0dCU=
+libgcc 16.2.0-r2 Q1W8wNem4DirycEcKw02oRG/G4dIw=
 libicu78 78.3-r4 Q1jXp9xQZD/EaRX6fdBlO+Dz6CFnk=
-libnghttp2-14 1.70.0-r6 Q1wwkqhiVNjY1mHFHf9cuS2y+u7cE=
-libstdc++ 16.2.0-r1 Q1ftrK0W2Zrm5RSoejw1JhR7Js4fY=
+libnghttp2-14 1.70.0-r7 Q1Aopdog1j7uy+Pr7AjMkucvl9uVc=
+libstdc++ 16.2.0-r2 Q1Lv+k/OdjvCMBqzKUf25qq7Aqkkw=
 libuv 1.53.0-r0 Q18r9PFvXfwhlzM1Old+3hDlYqzVQ=
 libxcrypt 4.5.2-r6 Q136uIG5Y/puIb7nbFIG90fgU8KK4=
 node-gyp 13.1.0-r1 Q1CWBoHM1p2p1TyIrCX9dFlVr77bQ=
@@ -170,11 +170,11 @@ nodejs-24 24.22.1-r2 Q1V0PV7RK7p/F0gOBYD8CizpfJdIw=
 npm 12.0.2-r0 Q1/hlgIuzbdWms/kGMAlLlEwYX8U0=
 openssl-4.0-libcrypto 4.0.3-r8 Q1xsqc7PMrIo4Ax/LEKUWoPaHKkzk=
 openssl-4.0-libssl 4.0.3-r8 Q1rI2Y8AG/AEGS8TEy4/LCN6qfsb4=
-openssl-provider-legacy-allowed 4.0.3-r1 Q1a1fNGtTpkMb5GgBdxE47Kl28Cxk=
+openssl-provider-legacy-allowed 4.1.0-r0 Q1NKQ+uHzeWRAsocpJrWwxpo8IeiQ=
 wolfi-base 1-r7 Q1+0E0UlaxkLWVTbmu8bjwYXhbZjo=
-wolfi-baselayout 20230201-r30 Q1aF/6XzN/J9leZvrqW26UuNZ1IXw=
+wolfi-baselayout 20230201-r31 Q1rRT/lrbBVxEZdhyr2qqt3S8ghjc=
 wolfi-keys 1-r14 Q1EoadkvCKoaZva6/KP6zyDyjja7o=
-zlib 1.3.2.1_rc20260921-r0 Q1J5R/y3HIlkvJXcoi/m754t027Eg=
+zlib 1.3.2.1_rc20260921-r1 Q1CLjxbA73b8jpoHNTyi4nhkx7Wps=
 LOCKED
 FACTORY_EOF
 
