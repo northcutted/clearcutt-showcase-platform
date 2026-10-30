@@ -30,7 +30,7 @@ signing:
 
 vulnerabilities:
   scanner: grype
-  vex: [vex/catalog.openvex.json, vex/drill.openvex.json]
+  vex: [vex/catalog.openvex.json]
   failOn: critical
   onlyFixed: true               # don't block on CVEs nobody can fix yet
 
