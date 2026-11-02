@@ -7,14 +7,14 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1793232000 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793491200 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-amd64
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:88a20e2d017bd20cdc0cb3910de603e7bea9512a6c351a8dd3c9df212ab03d73 AS packages-amd64
 ARG SOURCE_DATE_EPOCH
 RUN <<'FACTORY_EOF'
 set -eu
@@ -96,7 +96,7 @@ zlib 1.3.2.1_rc20260921-r1 Q1Ub6dKp3Ta9ickOJCrZu6zbJa70s=
 LOCKED
 FACTORY_EOF
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:360896efb0753a5701c48f860e17130c205eae5a264797aa3e7ea126ee2923a7 AS packages-arm64
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:88a20e2d017bd20cdc0cb3910de603e7bea9512a6c351a8dd3c9df212ab03d73 AS packages-arm64
 ARG SOURCE_DATE_EPOCH
 RUN <<'FACTORY_EOF'
 set -eu
