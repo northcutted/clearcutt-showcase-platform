@@ -7,14 +7,14 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1794096000 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1794700800 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true
 # from a context staged with `clearcutt-factory render --context-dir`.
 
 ARG TARGETARCH
 
 # ---- image ----
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:24f549a7fcace88e69b9557941168c74645688ecc4acf7fb6d734a6b74e9019d AS packages-amd64
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089 AS packages-amd64
 ARG SOURCE_DATE_EPOCH
 RUN <<'FACTORY_EOF'
 set -eu
@@ -23,15 +23,15 @@ apk add --no-cache --repositories-file /dev/null \
   apk-tools=2.14.13-r1 \
   busybox=1.38.0-r3 \
   ca-certificates-bundle=20261020-r0 \
-  glibc-2.44=2.44-r14 \
-  glibc-2.44-locale-posix=2.44-r14 \
-  ld-linux-2.44=2.44-r14 \
+  glibc-2.44=2.44-r20 \
+  glibc-2.44-locale-posix=2.44-r20 \
+  ld-linux-2.44=2.44-r20 \
   libbrotlicommon1=1.2.1-r3 \
   libbrotlidec1=1.2.1-r3 \
   libbrotlienc1=1.2.1-r3 \
-  libcrypt1-2.44=2.44-r14 \
+  libcrypt1-2.44=2.44-r20 \
   libcrypto3=3.6.5-r5 \
-  libgcc=16.2.0-r2 \
+  libgcc=16.2.0-r4 \
   libssl3=3.6.5-r5 \
   libxcrypt=4.5.2-r8 \
   openssl-4.0-libcrypto=4.0.3-r8 \
@@ -41,7 +41,7 @@ apk add --no-cache --repositories-file /dev/null \
   wolfi-base=1-r7 \
   wolfi-baselayout=20230201-r31 \
   wolfi-keys=1-r14 \
-  zlib=1.3.2.1_rc20260921-r2
+  zlib=1.4-r0
 rm -f /var/cache/ldconfig/aux-cache
 # every package must be the build the lock pins (apk's database records
 # each one's APKINDEX checksum)
@@ -62,15 +62,15 @@ awk '
 apk-tools 2.14.13-r1 Q14YF4Kelxu3Rgq9+JxTy+N61oS/I=
 busybox 1.38.0-r3 Q1nJ0RNPYKE/6p9+1WgdqC1lA0JnM=
 ca-certificates-bundle 20261020-r0 Q19P7fzB945PuRaQEnzg9napiRzKE=
-glibc-2.44 2.44-r14 Q13R5xVBX6hzAyf1adPTc4g1sycQI=
-glibc-2.44-locale-posix 2.44-r14 Q1rES7sgetnjBqSzx5b7kTMZjIrJE=
-ld-linux-2.44 2.44-r14 Q1J+vo3FbYm1kRABUoV/xcFmRCcUk=
+glibc-2.44 2.44-r20 Q1L/oIeGpd71cDi0z9ayT6u1sfTGs=
+glibc-2.44-locale-posix 2.44-r20 Q1Qry6de0IOyiYBfx5IHJfN4xaqvw=
+ld-linux-2.44 2.44-r20 Q12qJgR5XymaD0M3bx+GKWpxl393k=
 libbrotlicommon1 1.2.1-r3 Q1d6173SiBWI/3ZTJ9usIqKVhqlNQ=
 libbrotlidec1 1.2.1-r3 Q1SxcpNPM7TTnimjuCfB+KWbRChZ4=
 libbrotlienc1 1.2.1-r3 Q1ct7hg38j5fftUTCqmF8s60d3nwA=
-libcrypt1-2.44 2.44-r14 Q1/sV9rMODNZXKam+drUgcwodqqZI=
+libcrypt1-2.44 2.44-r20 Q1R8Z15DtV3ZCVv0y9veFjdCXUnoo=
 libcrypto3 3.6.5-r5 Q12JONrpXfu8gu2IlmYlARH09n4hc=
-libgcc 16.2.0-r2 Q1ZiXgGGwe5h6UXD0/Zbd/7LKBpkw=
+libgcc 16.2.0-r4 Q1uf93VeRZi5Mqej3KEwRHfqddGG4=
 libssl3 3.6.5-r5 Q1Lfx+Bfr91VnKL7aK8HQ9fL9pG98=
 libxcrypt 4.5.2-r8 Q1+8LswRqfx4C6qb8NnOfwhjKSNWc=
 openssl-4.0-libcrypto 4.0.3-r8 Q1W9piTcgyubhrducJCMM7+qErDxo=
@@ -80,11 +80,11 @@ tzdata 2026f-r0 Q1WMaR+kGyCy9U6Y9VZAYskvvVveE=
 wolfi-base 1-r7 Q16Ctc7TvokDUPOi+0TkHCeSmryh0=
 wolfi-baselayout 20230201-r31 Q1W4ff78hzbtDn6J9JJRRwbjKmKR4=
 wolfi-keys 1-r14 Q1pjSE0onslwptVuXi4b8BfLXGXXw=
-zlib 1.3.2.1_rc20260921-r2 Q1VhYXgIFnt54EjOK+EDlVL9ypZVI=
+zlib 1.4-r0 Q1qVwTiCkkizmeQd8KP04a2CqR+38=
 LOCKED
 FACTORY_EOF
 
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:24f549a7fcace88e69b9557941168c74645688ecc4acf7fb6d734a6b74e9019d AS packages-arm64
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089 AS packages-arm64
 ARG SOURCE_DATE_EPOCH
 RUN <<'FACTORY_EOF'
 set -eu
@@ -93,15 +93,15 @@ apk add --no-cache --repositories-file /dev/null \
   apk-tools=2.14.13-r1 \
   busybox=1.38.0-r3 \
   ca-certificates-bundle=20261020-r0 \
-  glibc-2.44=2.44-r14 \
-  glibc-2.44-locale-posix=2.44-r14 \
-  ld-linux-2.44=2.44-r14 \
+  glibc-2.44=2.44-r20 \
+  glibc-2.44-locale-posix=2.44-r20 \
+  ld-linux-2.44=2.44-r20 \
   libbrotlicommon1=1.2.1-r3 \
   libbrotlidec1=1.2.1-r3 \
   libbrotlienc1=1.2.1-r3 \
-  libcrypt1-2.44=2.44-r14 \
+  libcrypt1-2.44=2.44-r20 \
   libcrypto3=3.6.5-r5 \
-  libgcc=16.2.0-r2 \
+  libgcc=16.2.0-r4 \
   libssl3=3.6.5-r5 \
   libxcrypt=4.5.2-r8 \
   openssl-4.0-libcrypto=4.0.3-r8 \
@@ -111,7 +111,7 @@ apk add --no-cache --repositories-file /dev/null \
   wolfi-base=1-r7 \
   wolfi-baselayout=20230201-r31 \
   wolfi-keys=1-r14 \
-  zlib=1.3.2.1_rc20260921-r2
+  zlib=1.4-r0
 rm -f /var/cache/ldconfig/aux-cache
 # every package must be the build the lock pins (apk's database records
 # each one's APKINDEX checksum)
@@ -132,15 +132,15 @@ awk '
 apk-tools 2.14.13-r1 Q1Qsds1JQjG/DM8j2yXhl43/S1yzk=
 busybox 1.38.0-r3 Q1EJpocCHP/Q38Ix79OXIZwyt7hDA=
 ca-certificates-bundle 20261020-r0 Q1Uxft6BYfAMq8F4Gi9M7Q2XromUs=
-glibc-2.44 2.44-r14 Q1d1io9VLwaDHvwUNw5uY2kQtDppo=
-glibc-2.44-locale-posix 2.44-r14 Q1bg+GrFn6RN9aTfFela2uSJ0fTGc=
-ld-linux-2.44 2.44-r14 Q1/Flek1aZUoGoukBk44wS0jGpvDA=
+glibc-2.44 2.44-r20 Q1B94mlg0Bv/abBb0sLV3QO8sSAQk=
+glibc-2.44-locale-posix 2.44-r20 Q1Hel13q/A6Tio+wcm9VP2k/n9YAE=
+ld-linux-2.44 2.44-r20 Q1qD5R3z87Zfj3YODXLekURfc7+eg=
 libbrotlicommon1 1.2.1-r3 Q140bYrdbvrInBM8BEkQw3MoLd16A=
 libbrotlidec1 1.2.1-r3 Q1rR9rnHtKDVmObAzL1Uc132+Zadk=
 libbrotlienc1 1.2.1-r3 Q120L9ZpZDECnE1pJy/Q1GP16NczY=
-libcrypt1-2.44 2.44-r14 Q1WhMYqFxw1PaHk1mOecK55P5uRag=
+libcrypt1-2.44 2.44-r20 Q1NJmOixaG9pb0n5/oP435Brw96GI=
 libcrypto3 3.6.5-r5 Q1h2hm3+uOInicDyzLoF7Jr1gFjcI=
-libgcc 16.2.0-r2 Q1W8wNem4DirycEcKw02oRG/G4dIw=
+libgcc 16.2.0-r4 Q1QYW66prLSRDfaN/s0vOKQ6nSmdY=
 libssl3 3.6.5-r5 Q1GHcyKn4907FNKOl/nVdk1GlDxWQ=
 libxcrypt 4.5.2-r8 Q1JFLn2Ew1moZF5p1DqUqKsUoqLfg=
 openssl-4.0-libcrypto 4.0.3-r8 Q1xsqc7PMrIo4Ax/LEKUWoPaHKkzk=
@@ -150,7 +150,7 @@ tzdata 2026f-r0 Q1pC6bIBmnC4Xb7Y9ocE9OUAIjGSU=
 wolfi-base 1-r7 Q1+0E0UlaxkLWVTbmu8bjwYXhbZjo=
 wolfi-baselayout 20230201-r31 Q1rRT/lrbBVxEZdhyr2qqt3S8ghjc=
 wolfi-keys 1-r14 Q1EoadkvCKoaZva6/KP6zyDyjja7o=
-zlib 1.3.2.1_rc20260921-r2 Q1cJKvQ2hp/+vmNxa/wAUpFWTaoGY=
+zlib 1.4-r0 Q1WpQ7drOHLheIjK3ZkGHXioNlrKg=
 LOCKED
 FACTORY_EOF
 
