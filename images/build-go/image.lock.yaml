@@ -2,9 +2,9 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 generator: clearcutt-factory v0.4.1
-contentDigest: sha256:e128e7f009c06a499256b56aa834cacb590266025dcced57e0bc96c42d7af88a
+contentDigest: sha256:92bec98de32513e1f11dd580f9a915f2b4750c0ee7f46301560f2c2f9661f93b
 inputsDigest: sha256:52f4d3ba513eb18733d2582bee3868e15580430c38267f4c31c0b9267afcca15
-sourceDateEpoch: 1794096000
+sourceDateEpoch: 1794700800
 profile:
   path: org/profile.yaml
   digest: sha256:1bb0b6d38484a7d9046da615b855dfda3a5692cb31ff2a1fb00408b943a77fe2
@@ -17,13 +17,13 @@ builder:
     digest: sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
   toolbox:
     ref: cgr.dev/chainguard/wolfi-base:latest
-    digest: sha256:24f549a7fcace88e69b9557941168c74645688ecc4acf7fb6d734a6b74e9019d
+    digest: sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089
 base:
   ref: cgr.dev/chainguard/wolfi-base:latest
-  digest: sha256:24f549a7fcace88e69b9557941168c74645688ecc4acf7fb6d734a6b74e9019d
+  digest: sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089
 packages:
   manager: apk
-  inputsDigest: sha256:6a353d4a5876182e241907afd955eb030d47b94e8f343f07ff1b36e9866d4f9a
+  inputsDigest: sha256:69682b820aa3c289b5e50d566e0b1ccba6ef7774dcb3126001816371622cba68
   repositories:
     - https://apk.cgr.dev/chainguard
   platforms:
@@ -57,51 +57,51 @@ packages:
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: gdbm
-        version: 1.26-r9
+        version: 1.26-r10
         arch: x86_64
-        checksum: Q1+OpsdmzH2i87yrQzTUkS0smKEPg=
+        checksum: Q1Hz3RQwsMF42oY6/XdR+cvuPvaaI=
         origin: gdbm
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: git
-        version: 2.56.0-r3
+        version: 2.56.1-r1
         arch: x86_64
-        checksum: Q1jYzTC0P9foVOJYRFILHLglveILw=
+        checksum: Q1+MTGW345KtGvrK4QP4xAjz2UAP8=
         origin: git
         license: GPL-2.0-or-later AND ( Artistic-1.0-Perl OR GPL-1.0-or-later )
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: x86_64
-        checksum: Q13R5xVBX6hzAyf1adPTc4g1sycQI=
+        checksum: Q1L/oIeGpd71cDi0z9ayT6u1sfTGs=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44-locale-posix
-        version: 2.44-r14
+        version: 2.44-r20
         arch: x86_64
-        checksum: Q1rES7sgetnjBqSzx5b7kTMZjIrJE=
+        checksum: Q1Qry6de0IOyiYBfx5IHJfN4xaqvw=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: go-1.27
-        version: 1.27.3-r0
+        version: 1.27.4-r0
         arch: x86_64
-        checksum: Q1ZzG5p7V9KVvwZCN1kREbS5OkYM4=
+        checksum: Q1tly/Jm8miOd5uzdVP2IXJ8gALvY=
         origin: go-1.27
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: heimdal-libs
-        version: 7.8.0-r55
+        version: 7.8.0-r56
         arch: x86_64
-        checksum: Q1UeySuHDx/CaKpIfcvcN6/Zs5XYY=
+        checksum: Q1wjmrT+3LZTb2L2iFASw9ZvIYiPA=
         origin: heimdal
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: keyutils-libs
-        version: 1.6.3-r41
+        version: 1.6.3-r42
         arch: x86_64
-        checksum: Q1XgkcHdv1/smZU0SQNAaWB5d4h1Y=
+        checksum: Q10DM+xQxL2O4Z3iC3LyBdoQ14+r8=
         origin: keyutils
         license: GPL-2.0-or-later OR LGPL-2.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -120,9 +120,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ld-linux-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: x86_64
-        checksum: Q1J+vo3FbYm1kRABUoV/xcFmRCcUk=
+        checksum: Q12qJgR5XymaD0M3bx+GKWpxl393k=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -148,16 +148,16 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcom_err
-        version: 1.47.4-r5
+        version: 1.47.4-r6
         arch: x86_64
-        checksum: Q12E6gt50fLlmRNgcOcU4cAFxp4Ec=
+        checksum: Q1/yoa0joe1pXpX9oFTGRgmi6hh4o=
         origin: e2fsprogs
         license: GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcrypt1-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: x86_64
-        checksum: Q1/sV9rMODNZXKam+drUgcwodqqZI=
+        checksum: Q1R8Z15DtV3ZCVv0y9veFjdCXUnoo=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -176,16 +176,16 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libgcc
-        version: 16.2.0-r2
+        version: 16.2.0-r4
         arch: x86_64
-        checksum: Q1ZiXgGGwe5h6UXD0/Zbd/7LKBpkw=
+        checksum: Q1uf93VeRZi5Mqej3KEwRHfqddGG4=
         origin: gcc
         license: GPL-3.0-or-later WITH GCC-exception-3.1
         repo: https://apk.cgr.dev/chainguard
       - name: libidn2
-        version: 2.3.8-r12
+        version: 2.3.8-r13
         arch: x86_64
-        checksum: Q1DSX/9PdfZuEiGQa88AP6gnX7JlI=
+        checksum: Q1gjl6vWNRQmDX+pVQhfbW6+jaEEc=
         origin: libidn2
         license: GPL-2.0-or-later AND LGPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -239,9 +239,9 @@ packages:
         license: GPL-2.0-or-later AND LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: lmdb
-        version: 0.9.35-r3
+        version: 0.9.35-r4
         arch: x86_64
-        checksum: Q1V0XfTN1JDlshI1+TyHnkS2T0Ge8=
+        checksum: Q1hBLhu7z4mw5W6qii8nXpwBkgcf4=
         origin: lmdb
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
@@ -309,9 +309,9 @@ packages:
         license: Apache-2.0
         repo: https://apk.cgr.dev/chainguard
       - name: readline
-        version: 8.3-r3
+        version: 8.3-r4
         arch: x86_64
-        checksum: Q1DpD7gaJW7NfhS6UXgOqJ/d9LlBc=
+        checksum: Q1Z5EWC+40vbRsYCdaRSCguzdKdfo=
         origin: readline
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -344,9 +344,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: zlib
-        version: 1.3.2.1_rc20260921-r2
+        version: 1.4-r0
         arch: x86_64
-        checksum: Q1VhYXgIFnt54EjOK+EDlVL9ypZVI=
+        checksum: Q1qVwTiCkkizmeQd8KP04a2CqR+38=
         origin: zlib
         license: MPL-2.0 AND MIT
         repo: https://apk.cgr.dev/chainguard
@@ -380,51 +380,51 @@ packages:
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: gdbm
-        version: 1.26-r9
+        version: 1.26-r10
         arch: aarch64
-        checksum: Q1YbVQY0lrywqPTh3yp2HkWyfZk1g=
+        checksum: Q1E/6LbAmug2jwNlEFLG9q5m69KvY=
         origin: gdbm
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: git
-        version: 2.56.0-r3
+        version: 2.56.1-r1
         arch: aarch64
-        checksum: Q1fmtdLmocRA6WES+y3c4lmmlEVMM=
+        checksum: Q1SdYsTeXLBA4L6vVvj7M5Zq62sc0=
         origin: git
         license: GPL-2.0-or-later AND ( Artistic-1.0-Perl OR GPL-1.0-or-later )
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: aarch64
-        checksum: Q1d1io9VLwaDHvwUNw5uY2kQtDppo=
+        checksum: Q1B94mlg0Bv/abBb0sLV3QO8sSAQk=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44-locale-posix
-        version: 2.44-r14
+        version: 2.44-r20
         arch: aarch64
-        checksum: Q1bg+GrFn6RN9aTfFela2uSJ0fTGc=
+        checksum: Q1Hel13q/A6Tio+wcm9VP2k/n9YAE=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: go-1.27
-        version: 1.27.3-r0
+        version: 1.27.4-r0
         arch: aarch64
-        checksum: Q1FtkSzOMaxXRBxV3hc8xKNdb0K9I=
+        checksum: Q1R6kwkQ6gFvh6GyomU2+2tt2zsAI=
         origin: go-1.27
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: heimdal-libs
-        version: 7.8.0-r55
+        version: 7.8.0-r56
         arch: aarch64
-        checksum: Q1/UYWRdK4YZN3aLZx8kd/z0JYTQY=
+        checksum: Q1HHbLnSSfTpM2vc1lYTlxn/78Q5E=
         origin: heimdal
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: keyutils-libs
-        version: 1.6.3-r41
+        version: 1.6.3-r42
         arch: aarch64
-        checksum: Q1Jwz50TjAkWnJuq3rB9QODnUE87g=
+        checksum: Q1ptzJn7th97nRGLngEuMKJFXdfFo=
         origin: keyutils
         license: GPL-2.0-or-later OR LGPL-2.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -443,9 +443,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ld-linux-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: aarch64
-        checksum: Q1/Flek1aZUoGoukBk44wS0jGpvDA=
+        checksum: Q1qD5R3z87Zfj3YODXLekURfc7+eg=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -471,16 +471,16 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcom_err
-        version: 1.47.4-r5
+        version: 1.47.4-r6
         arch: aarch64
-        checksum: Q1ahB2dl5v6avHq4oHG9XExJq/Dhs=
+        checksum: Q1cDlGBtp3ynKPeUayCldWiJSHrvA=
         origin: e2fsprogs
         license: GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcrypt1-2.44
-        version: 2.44-r14
+        version: 2.44-r20
         arch: aarch64
-        checksum: Q1WhMYqFxw1PaHk1mOecK55P5uRag=
+        checksum: Q1NJmOixaG9pb0n5/oP435Brw96GI=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -499,16 +499,16 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libgcc
-        version: 16.2.0-r2
+        version: 16.2.0-r4
         arch: aarch64
-        checksum: Q1W8wNem4DirycEcKw02oRG/G4dIw=
+        checksum: Q1QYW66prLSRDfaN/s0vOKQ6nSmdY=
         origin: gcc
         license: GPL-3.0-or-later WITH GCC-exception-3.1
         repo: https://apk.cgr.dev/chainguard
       - name: libidn2
-        version: 2.3.8-r12
+        version: 2.3.8-r13
         arch: aarch64
-        checksum: Q1FMCOxtZ+R6HtBtxk6KNbgcG9/t4=
+        checksum: Q1rjLCADYvMNJYTnY5EzA/7m6/PWg=
         origin: libidn2
         license: GPL-2.0-or-later AND LGPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -562,9 +562,9 @@ packages:
         license: GPL-2.0-or-later AND LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: lmdb
-        version: 0.9.35-r3
+        version: 0.9.35-r4
         arch: aarch64
-        checksum: Q10KJYgn4UIVbHPol5ORhPjAvD0Xc=
+        checksum: Q1PNo7ZcRxmuik+yiZiJAuwQ4zpHM=
         origin: lmdb
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
@@ -632,9 +632,9 @@ packages:
         license: Apache-2.0
         repo: https://apk.cgr.dev/chainguard
       - name: readline
-        version: 8.3-r3
+        version: 8.3-r4
         arch: aarch64
-        checksum: Q1BmEgSRVEbSo6hg0gmugFfZRxwFw=
+        checksum: Q1dazZkNXg05/knBZb8OtveGxzA2c=
         origin: readline
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -667,9 +667,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: zlib
-        version: 1.3.2.1_rc20260921-r2
+        version: 1.4-r0
         arch: aarch64
-        checksum: Q1cJKvQ2hp/+vmNxa/wAUpFWTaoGY=
+        checksum: Q1WpQ7drOHLheIjK3ZkGHXioNlrKg=
         origin: zlib
         license: MPL-2.0 AND MIT
         repo: https://apk.cgr.dev/chainguard
