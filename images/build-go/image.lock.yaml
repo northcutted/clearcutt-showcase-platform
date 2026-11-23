@@ -2,9 +2,9 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 generator: clearcutt-factory v0.4.1
-contentDigest: sha256:92bec98de32513e1f11dd580f9a915f2b4750c0ee7f46301560f2c2f9661f93b
+contentDigest: sha256:f6e63c83e8bf74c232aba36877344ca5289f130c0502b6442ec442f3791eef58
 inputsDigest: sha256:52f4d3ba513eb18733d2582bee3868e15580430c38267f4c31c0b9267afcca15
-sourceDateEpoch: 1794700800
+sourceDateEpoch: 1795305600
 profile:
   path: org/profile.yaml
   digest: sha256:1bb0b6d38484a7d9046da615b855dfda3a5692cb31ff2a1fb00408b943a77fe2
@@ -14,16 +14,16 @@ builder:
     digest: sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea
   frontend:
     ref: docker/dockerfile:1
-    digest: sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+    digest: sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
   toolbox:
     ref: cgr.dev/chainguard/wolfi-base:latest
-    digest: sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089
+    digest: sha256:be019c1c74fe69204a42c4e10bc4d886a49bf5403ffa74374ef7baa408fc9a26
 base:
   ref: cgr.dev/chainguard/wolfi-base:latest
-  digest: sha256:833c48f1faf32c90e6f9501a2410a9aa28ceb2c594102edd4470053c30efa089
+  digest: sha256:be019c1c74fe69204a42c4e10bc4d886a49bf5403ffa74374ef7baa408fc9a26
 packages:
   manager: apk
-  inputsDigest: sha256:69682b820aa3c289b5e50d566e0b1ccba6ef7774dcb3126001816371622cba68
+  inputsDigest: sha256:588b016c2276a6d387d80d65191ae2422654352cbba4ecd25e7ad2f761eaea7c
   repositories:
     - https://apk.cgr.dev/chainguard
   platforms:
@@ -50,9 +50,9 @@ packages:
         license: MPL-2.0 AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: cyrus-sasl-heimdal-libs
-        version: 2.1.28-r58
+        version: 2.1.28-r59
         arch: x86_64
-        checksum: Q1DC9Yw4pMVRzfDpC3daQYzbX25Mw=
+        checksum: Q1rh9HGdPy3nJW++aq0OyVHHKI06M=
         origin: cyrus-sasl-heimdal
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
@@ -71,16 +71,16 @@ packages:
         license: GPL-2.0-or-later AND ( Artistic-1.0-Perl OR GPL-1.0-or-later )
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: x86_64
-        checksum: Q1L/oIeGpd71cDi0z9ayT6u1sfTGs=
+        checksum: Q1ucqZun4XzfAqvjin20zBOBgaczc=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44-locale-posix
-        version: 2.44-r20
+        version: 2.44-r24
         arch: x86_64
-        checksum: Q1Qry6de0IOyiYBfx5IHJfN4xaqvw=
+        checksum: Q1E9zOeLWihxnzPi1DiL7NaKstVTw=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -106,44 +106,44 @@ packages:
         license: GPL-2.0-or-later OR LGPL-2.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: krb5-conf
-        version: 1.0-r10
+        version: 1.0-r11
         arch: x86_64
-        checksum: Q1+nzcG33MVDgV7NxwDXA6r0h6j14=
+        checksum: Q18f9GxZPetKJXrDOcT2iLdg5BzuE=
         origin: krb5-conf
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: krb5-libs
-        version: 1.22.2-r6
+        version: 1.22.3-r0
         arch: x86_64
-        checksum: Q1kr4h83DXaCDnw9t5PsqZgJ2zGqU=
+        checksum: Q1K2OseD9t6ppqlc+tsS42nAht2aU=
         origin: krb5
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ld-linux-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: x86_64
-        checksum: Q12qJgR5XymaD0M3bx+GKWpxl393k=
+        checksum: Q1UxST265ocCUIHd0q543o+OPQ0mg=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlicommon1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: x86_64
-        checksum: Q1d6173SiBWI/3ZTJ9usIqKVhqlNQ=
+        checksum: Q1COZSrx/FvfYz7P8A5i8Efk+Te4Y=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlidec1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: x86_64
-        checksum: Q1SxcpNPM7TTnimjuCfB+KWbRChZ4=
+        checksum: Q1ytpxBJMhBm3PQEnszbJfHgljQDg=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlienc1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: x86_64
-        checksum: Q1ct7hg38j5fftUTCqmF8s60d3nwA=
+        checksum: Q1WvMjqhPxtupIzptfF5isxhh/qs8=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -155,16 +155,16 @@ packages:
         license: GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcrypt1-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: x86_64
-        checksum: Q1R8Z15DtV3ZCVv0y9veFjdCXUnoo=
+        checksum: Q1O2y7Gs/Dw03arbgFZh2022/JUoY=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libcurl-openssl4
-        version: 8.23.0-r3
+        version: 8.23.0-r4
         arch: x86_64
-        checksum: Q1FFfnB1sVWR4lll8iWoEz2xunvUU=
+        checksum: Q1dUhF4sI0t6EnSEQhy5NeXe3jaOo=
         origin: curl
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -176,9 +176,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libgcc
-        version: 16.2.0-r4
+        version: 16.2.0-r5
         arch: x86_64
-        checksum: Q1uf93VeRZi5Mqej3KEwRHfqddGG4=
+        checksum: Q1u+PM7EtOrS8BQarHdsB57bgL/qo=
         origin: gcc
         license: GPL-3.0-or-later WITH GCC-exception-3.1
         repo: https://apk.cgr.dev/chainguard
@@ -197,23 +197,23 @@ packages:
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
       - name: libnghttp2-14
-        version: 1.71.0-r0
+        version: 1.71.0-r1
         arch: x86_64
-        checksum: Q137VBP01YHjrDo8ppQ2RrWTlfXxY=
+        checksum: Q1w8rC2rn3Hg9LGK6OLjZrhw/bNVA=
         origin: nghttp2
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libpcre2-8-0
-        version: 10.49-r3
+        version: 10.49-r4
         arch: x86_64
-        checksum: Q1NA0afCCxgIbEAN80yDT2Eh45avY=
+        checksum: Q1ds8ooI2rBCDqjisfO94TtHS778c=
         origin: pcre2
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: libpsl
-        version: 0.23.3-r4
+        version: 0.23.3-r5
         arch: x86_64
-        checksum: Q1AtlcyaRuh5+CmWk0sVjGoGNbSdo=
+        checksum: Q1Z084/NImz12lW2cDE0J8Td/nF0M=
         origin: libpsl
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -225,9 +225,9 @@ packages:
         license: GPL-2.0-or-later OR LGPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libverto
-        version: 0.3.2-r11
+        version: 0.3.2-r12
         arch: x86_64
-        checksum: Q12cjXpTDtJcf1xg1tIxwFxqgMQ7k=
+        checksum: Q1KNID1C2fJqlKrkU5cmw3UX3tPDs=
         origin: libverto
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -246,30 +246,30 @@ packages:
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
       - name: ncurses
-        version: 6.6.20261107-r0
+        version: 6.6.20261121-r0
         arch: x86_64
-        checksum: Q1KZcaaxvGGjHI4EeXdp6TnxNA5SA=
+        checksum: Q1963Cb/b3X4PH3bc60znNvXMtyCU=
         origin: ncurses
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ncurses-terminfo-base
-        version: 6.6.20261107-r0
+        version: 6.6.20261121-r0
         arch: x86_64
-        checksum: Q1g/V+kW6BOpXncVP0Z6Cq/+SKphA=
+        checksum: Q1n4CUKOyTTVgzQO4CuMczUaEuqr0=
         origin: ncurses
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: nghttp3
-        version: 1.19.0-r0
+        version: 1.19.0-r1
         arch: x86_64
-        checksum: Q1qEYQssODlXCw54zrJ+mPjRcf/Nw=
+        checksum: Q1+CZxjy7NZIRtKwmzA0Nzpy5MiMM=
         origin: nghttp3
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ngtcp2
-        version: 1.26.0-r0
+        version: 1.26.0-r1
         arch: x86_64
-        checksum: Q1a/FkJ6em0Hz6MF9uY+zWO6v7oxY=
+        checksum: Q1rBse3AoMURTB9bK4Bdw37HO9N48=
         origin: ngtcp2
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -316,16 +316,16 @@ packages:
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: sqlite-libs
-        version: 3.54.1-r0
+        version: 3.54.1-r1
         arch: x86_64
-        checksum: Q1VRLw0RR5HoAu1uTfKALfMDoAMco=
+        checksum: Q1ZXhs/q6hCO4kvF/4EYuXG7sF/1k=
         origin: sqlite
         license: blessing
         repo: https://apk.cgr.dev/chainguard
       - name: wolfi-base
-        version: 1-r7
+        version: 1-r8
         arch: x86_64
-        checksum: Q16Ctc7TvokDUPOi+0TkHCeSmryh0=
+        checksum: Q1egnVthiILKJnfZ8GWxkmDaHFEKI=
         origin: wolfi-base
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -337,9 +337,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: wolfi-keys
-        version: 1-r14
+        version: 1-r15
         arch: x86_64
-        checksum: Q1pjSE0onslwptVuXi4b8BfLXGXXw=
+        checksum: Q1dz4m11I3b0s52KsG8H0Pvn2onxo=
         origin: wolfi-keys
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -373,9 +373,9 @@ packages:
         license: MPL-2.0 AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: cyrus-sasl-heimdal-libs
-        version: 2.1.28-r58
+        version: 2.1.28-r59
         arch: aarch64
-        checksum: Q1NOAPW2cQulC8VW9tww3lp1GnV5k=
+        checksum: Q1KCso8E3ZUpQJKS4geI+6E6czvZU=
         origin: cyrus-sasl-heimdal
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
@@ -394,16 +394,16 @@ packages:
         license: GPL-2.0-or-later AND ( Artistic-1.0-Perl OR GPL-1.0-or-later )
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: aarch64
-        checksum: Q1B94mlg0Bv/abBb0sLV3QO8sSAQk=
+        checksum: Q1iP3EOJxCvanI4e/54iYgB2rf/mY=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: glibc-2.44-locale-posix
-        version: 2.44-r20
+        version: 2.44-r24
         arch: aarch64
-        checksum: Q1Hel13q/A6Tio+wcm9VP2k/n9YAE=
+        checksum: Q1Y4HcO4oCh15aMZ9HyRIRD8Mn+/Q=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
@@ -429,44 +429,44 @@ packages:
         license: GPL-2.0-or-later OR LGPL-2.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: krb5-conf
-        version: 1.0-r10
+        version: 1.0-r11
         arch: aarch64
-        checksum: Q1VYg7l46TvIrY6GYfhkQ/ghkw7l8=
+        checksum: Q1VyrdqjK2xZ0P2c8/2ZAH5fKfT3k=
         origin: krb5-conf
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: krb5-libs
-        version: 1.22.2-r6
+        version: 1.22.3-r0
         arch: aarch64
-        checksum: Q1EC12bnR/WT6fpuFTs1irl0Jx9Xc=
+        checksum: Q1ko03jDPP07yS8magpU7XTIWx0ow=
         origin: krb5
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ld-linux-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: aarch64
-        checksum: Q1qD5R3z87Zfj3YODXLekURfc7+eg=
+        checksum: Q1+QMLxa16FLTCnLg4S8ZShhyBjKQ=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlicommon1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: aarch64
-        checksum: Q140bYrdbvrInBM8BEkQw3MoLd16A=
+        checksum: Q11xQxk9sKFQ5dbHLwKw2lOJzCDOs=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlidec1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: aarch64
-        checksum: Q1rR9rnHtKDVmObAzL1Uc132+Zadk=
+        checksum: Q1SQX7DYFOD83HLzK2npGUWIvAook=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libbrotlienc1
-        version: 1.2.1-r3
+        version: 1.2.1-r4
         arch: aarch64
-        checksum: Q120L9ZpZDECnE1pJy/Q1GP16NczY=
+        checksum: Q1nACWHzZ/7LFTAoLPtvenAMoG7bw=
         origin: brotli
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -478,16 +478,16 @@ packages:
         license: GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libcrypt1-2.44
-        version: 2.44-r20
+        version: 2.44-r24
         arch: aarch64
-        checksum: Q1NJmOixaG9pb0n5/oP435Brw96GI=
+        checksum: Q1vrnr4J+kzdw/t1tRnK3fYVxORrQ=
         origin: glibc-2.44
         license: LGPL-2.1-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libcurl-openssl4
-        version: 8.23.0-r3
+        version: 8.23.0-r4
         arch: aarch64
-        checksum: Q1WSQAM/gy5To3STuK+M0KLnidB94=
+        checksum: Q1PtkWsJWwweQ+xRa+sXnXLq+msDQ=
         origin: curl
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -499,9 +499,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libgcc
-        version: 16.2.0-r4
+        version: 16.2.0-r5
         arch: aarch64
-        checksum: Q1QYW66prLSRDfaN/s0vOKQ6nSmdY=
+        checksum: Q10K15B+liHs0BK45aBs5zGYbeKiA=
         origin: gcc
         license: GPL-3.0-or-later WITH GCC-exception-3.1
         repo: https://apk.cgr.dev/chainguard
@@ -520,23 +520,23 @@ packages:
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
       - name: libnghttp2-14
-        version: 1.71.0-r0
+        version: 1.71.0-r1
         arch: aarch64
-        checksum: Q1dAWFsCnFWiEG7soeqvE3oKO/R+c=
+        checksum: Q1/fRIIPwt37FvzVPajfF38m+3rP0=
         origin: nghttp2
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: libpcre2-8-0
-        version: 10.49-r3
+        version: 10.49-r4
         arch: aarch64
-        checksum: Q1RQRe6WQaHyWfXGuYD3iZyQoVZYY=
+        checksum: Q1Ed2JHz3wGDlUhujnu89nDuSkhQg=
         origin: pcre2
         license: BSD-3-Clause
         repo: https://apk.cgr.dev/chainguard
       - name: libpsl
-        version: 0.23.3-r4
+        version: 0.23.3-r5
         arch: aarch64
-        checksum: Q1CCD0M36tKrPi4+w/XZbBQCOFYWg=
+        checksum: Q1mkGYdeNkBNmC3U2SSrdWIDQVKqQ=
         origin: libpsl
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -548,9 +548,9 @@ packages:
         license: GPL-2.0-or-later OR LGPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: libverto
-        version: 0.3.2-r11
+        version: 0.3.2-r12
         arch: aarch64
-        checksum: Q1iDJxqWDIETMpE0AWQYtXsBXyTIE=
+        checksum: Q1q7fTZxfR8kGE9AgRaxdtcDexi58=
         origin: libverto
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -569,30 +569,30 @@ packages:
         license: OLDAP-2.8
         repo: https://apk.cgr.dev/chainguard
       - name: ncurses
-        version: 6.6.20261107-r0
+        version: 6.6.20261121-r0
         arch: aarch64
-        checksum: Q19G4A7wo4cX8dIgQaPzkNOokK8Ck=
+        checksum: Q1lCDk97eLPll0ebVqI1Ay5gIWAHk=
         origin: ncurses
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ncurses-terminfo-base
-        version: 6.6.20261107-r0
+        version: 6.6.20261121-r0
         arch: aarch64
-        checksum: Q1rIsYYOH7l/3pXlpajSOA+VUcpDI=
+        checksum: Q1qUP0p8j+FQkUrpE7kIqSrmUr7IE=
         origin: ncurses
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: nghttp3
-        version: 1.19.0-r0
+        version: 1.19.0-r1
         arch: aarch64
-        checksum: Q1w8gFxs2y0fac/O98D2HDcDq1CDk=
+        checksum: Q1wivoM1HurmpuAOANFDf9r06gdR0=
         origin: nghttp3
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: ngtcp2
-        version: 1.26.0-r0
+        version: 1.26.0-r1
         arch: aarch64
-        checksum: Q1SPumbadSEv7cRXUWojvpRn8/evI=
+        checksum: Q1s8EdB4eNQVO/deJVI6M57kyhATk=
         origin: ngtcp2
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -639,16 +639,16 @@ packages:
         license: GPL-3.0-or-later
         repo: https://apk.cgr.dev/chainguard
       - name: sqlite-libs
-        version: 3.54.1-r0
+        version: 3.54.1-r1
         arch: aarch64
-        checksum: Q1Nf7tuYzhYoQQzeIfbctX7oi/la8=
+        checksum: Q1m7HknZXDi6f4Py9vcKMUcddElB4=
         origin: sqlite
         license: blessing
         repo: https://apk.cgr.dev/chainguard
       - name: wolfi-base
-        version: 1-r7
+        version: 1-r8
         arch: aarch64
-        checksum: Q1+0E0UlaxkLWVTbmu8bjwYXhbZjo=
+        checksum: Q1DCOggJlC+msh7Y9c30stS/DPdeM=
         origin: wolfi-base
         license: MIT
         repo: https://apk.cgr.dev/chainguard
@@ -660,9 +660,9 @@ packages:
         license: MIT
         repo: https://apk.cgr.dev/chainguard
       - name: wolfi-keys
-        version: 1-r14
+        version: 1-r15
         arch: aarch64
-        checksum: Q1EoadkvCKoaZva6/KP6zyDyjja7o=
+        checksum: Q1OlBJsfxd9QYjm1YCQs8oiR1TNi4=
         origin: wolfi-keys
         license: MIT
         repo: https://apk.cgr.dev/chainguard
